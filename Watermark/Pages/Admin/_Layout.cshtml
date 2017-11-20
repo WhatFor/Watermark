@@ -34,7 +34,7 @@
 <body class="menubar-left menubar-dark dashboard dashboard-v1">
     <nav class="site-navbar navbar fixed-top navbar-expand-md navbar-light bg-blue">
         <div class="navbar-header">
-            <a class="navbar-brand" href="@Url.Action("Dashboard", "Admin")">
+            <a class="navbar-brand" asp-page="/Admin/Dashboard">
                 <svg class="flip-y" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 32 32">
                     <path fill="currentColor" d="M30.063 2.585c-.253-1.023-.758-1.754-1.5-2.17-3.28-1.842-9.02 3.577-11.05 6.88-.65 1.06-1.275 2.358-1.792 3.718-1.486-.21-2.95-.098-4.366.337C6.954 12.694 4 16.975 4 22v2c0 4.337 3.663 8 8 8h1.98c5.31 0 9.803-3.664 10.682-8.714.33-1.89.142-3.807-.54-5.585 1.26-1.2 2.43-2.587 3.268-3.886 1.646-2.554 3.46-8.062 2.673-11.23zM12 23c-1.105 0-2-.895-2-2s.895-2 2-2 2 .895 2 2-.895 2-2 2z" />
                     <path data-color="color-2" fill="#52c03b" d="M10.77 9.437c1.14-.35 2.32-.527 3.506-.527h.148c.424-.954.888-1.846 1.37-2.633-1.106-2.466-2.56-4.72-4.01-5.71-.7-.477-1.387-.656-2.04-.528-.442.086-1.08.37-1.594 1.23C7 3.19 6.89 7.465 7.457 11.06c1-.7 2.108-1.255 3.312-1.623z" />
@@ -142,7 +142,7 @@
                         <a class="dropdown-item" href="#"><i class="fa fa-envelope-o mr-3"></i> <span>My Inbox</span></a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#"><i class="fa fa-file-o mr-3"></i> <span>Lock Screen</span></a>
-                        <a class="dropdown-item" href="@Url.Action("Logout", "Account")"><i class="fa fa-power-off mr-3"></i> <span>Logout</span></a>
+                        <a class="dropdown-item" asp-page="/Admin/Dashboard"><i class="fa fa-power-off mr-3"></i> <span>Logout</span></a>
                     </div>
                 </li>
             </ul>
@@ -157,9 +157,9 @@
             <div class="site-menubar-inner">
                 <ul class="site-menu">
                     <!-- MAIN NAVIGATION SECTION -->
-                    <li><a href="@Url.Action("Dashboard", "Admin")"><i class="menu-icon zmdi zmdi-home zmdi-hc-lg"></i> <span class="menu-text">Dashboard</span></a></li>
-                    <li><a href="@Url.Action("Dashboard", "Admin")"><i class="menu-icon zmdi zmdi-alert-circle-o zmdi-hc-lg"></i> <span class="menu-text">Activity</span></a></li>
-                    <li><a href="@Url.Action("Dashboard", "Admin")"><i class="menu-icon zmdi zmdi-alert-triangle zmdi-hc-lg"></i> <span class="menu-text">Notifications</span></a></li>
+                    <li><a asp-page="/Admin/Dashboard"><i class="menu-icon zmdi zmdi-home zmdi-hc-lg"></i> <span class="menu-text">Dashboard</span></a></li>
+                    <li><a asp-page="/Admin/Dashboard"><i class="menu-icon zmdi zmdi-alert-circle-o zmdi-hc-lg"></i> <span class="menu-text">Activity</span></a></li>
+                    <li><a asp-page="/Admin/Dashboard"><i class="menu-icon zmdi zmdi-alert-triangle zmdi-hc-lg"></i> <span class="menu-text">Notifications</span></a></li>
                     <li>
                         <a href="javascript:void(0)" class="submenu-toggle">
                             <i class="menu-icon zmdi zmdi-balance zmdi-hc-lg"></i> <span class="menu-text">Sales</span> <i class="menu-caret zmdi zmdi-hc-sm zmdi-chevron-right"></i>
@@ -178,7 +178,7 @@
                             <i class="menu-icon zmdi zmdi-collection-text zmdi-hc-lg"></i> <span class="menu-text">Catalog</span> <i class="menu-caret zmdi zmdi-hc-sm zmdi-chevron-right"></i>
                         </a>
                         <ul class="submenu">
-                            <li><a href="@Url.Action("Products", "Admin/Catalog").Replace("%2F", "/")"><span class="menu-text">Products</span></a></li>
+                            <li><a asp-page="/Admin/Catalog/Products"><span class="menu-text">Products</span></a></li>
                         </ul>
                     </li>
                     <li>

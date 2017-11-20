@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using Watermark.Models.Admin;
 using Watermark.Models.Products;
 using Watermark.Services.Contracts;
 
@@ -24,7 +23,6 @@ namespace Watermark.Controllers
         }
 
         [HttpPost]
-        [ServiceFilter(typeof(AdminAuthorizationAttribute))]
         public async Task<JsonResult> CreateProduct([FromBody]Product product)
         {
             var result = await ProductService.CreateProduct(product);
