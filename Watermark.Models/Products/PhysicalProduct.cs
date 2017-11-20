@@ -1,12 +1,8 @@
 ﻿namespace Watermark.Models.Products
 {
-    public class Product
+    public class PhysicalProduct : BaseProduct
     {
-        public int Id { get; set; }
-
-        public string DisplayName { get; set; }
-
-        public decimal BaseCostGBP { get; set; }
+        public override ProductType ProductType => ProductType.PhysicalProduct;
 
         /*      Requirements      */
         // - two types of products? physical/digital
