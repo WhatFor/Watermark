@@ -8,7 +8,7 @@ namespace Watermark.Models.Products
     {
         public int Id { get; }
 
-        public ProductType ProductType { get; }
+        public virtual ProductType ProductType { get; }
 
         public ProductName ProductName { get; set; }
 

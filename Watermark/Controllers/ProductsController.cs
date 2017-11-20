@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using Watermark.Models.Products;
+using Watermark.Models.Products.Contracts;
 using Watermark.Services.Contracts;
 
 namespace Watermark.Controllers
@@ -23,7 +23,7 @@ namespace Watermark.Controllers
         }
 
         [HttpPost]
-        public async Task<JsonResult> CreateProduct([FromBody]Product product)
+        public async Task<JsonResult> CreateProduct([FromBody]IProduct product)
         {
             var result = await ProductService.CreateProduct(product);
             return new JsonResult(result);
