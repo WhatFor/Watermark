@@ -1,0 +1,9 @@
+C:\Users\Chris\Documents\Visual Studio 2017\Projects\WatermarkApi\WatermarkApi.Models\bin\Debug\netcoreapp2.0\WatermarkApi.Models.deps.json
+C:\Users\Chris\Documents\Visual Studio 2017\Projects\WatermarkApi\WatermarkApi.Models\bin\Debug\netcoreapp2.0\WatermarkApi.Models.dll
+C:\Users\Chris\Documents\Visual Studio 2017\Projects\WatermarkApi\WatermarkApi.Models\bin\Debug\netcoreapp2.0\WatermarkApi.Models.pdb
+C:\Users\Chris\Documents\Visual Studio 2017\Projects\WatermarkApi\WatermarkApi.Models\obj\Debug\netcoreapp2.0\WatermarkApi.Models.csproj.CoreCompileInputs.cache
+C:\Users\Chris\Documents\Visual Studio 2017\Projects\WatermarkApi\WatermarkApi.Models\obj\Debug\netcoreapp2.0\WatermarkApi.Models.AssemblyInfoInputs.cache
+C:\Users\Chris\Documents\Visual Studio 2017\Projects\WatermarkApi\WatermarkApi.Models\obj\Debug\netcoreapp2.0\WatermarkApi.Models.AssemblyInfo.cs
+C:\Users\Chris\Documents\Visual Studio 2017\Projects\WatermarkApi\WatermarkApi.Models\obj\Debug\netcoreapp2.0\WatermarkApi.Models.dll
+C:\Users\Chris\Documents\Visual Studio 2017\Projects\WatermarkApi\WatermarkApi.Models\obj\Debug\netcoreapp2.0\WatermarkApi.Models.pdb
+C:\Users\Chris\Documents\Visual Studio 2017\Projects\WatermarkApi\WatermarkApi.Models\obj\Debug\netcoreapp2.0\WatermarkApi.Models.csprojResolveAssemblyReference.cache
