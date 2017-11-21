@@ -3,4 +3,4 @@
 */**/bin/Release
 */**/obj/Debug
 */**/obj/Release
-Watermark/*.log
+Watermark/Logs/**/*

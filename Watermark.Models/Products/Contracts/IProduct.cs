@@ -36,11 +36,11 @@ namespace Watermark.Models.Products.Contracts
 
         List<ProductAttribute> ProductAttributes { get; set; }
 
-        List<IProduct> RelatedProducts { get; set; }
+        List<Product> RelatedProducts { get; set; }
 
-        List<IProduct> UpsellProducts { get; set; }
+        List<Product> UpsellProducts { get; set; }
 
-        List<IProduct> CrossSellProducts { get; set; }
+        List<Product> CrossSellProducts { get; set; }
 
         List<ProductReview> Reviews { get; set; }
      

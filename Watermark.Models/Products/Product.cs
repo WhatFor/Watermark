@@ -4,23 +4,23 @@ using Watermark.Models.Products.Contracts;
 
 namespace Watermark.Models.Products
 {
-    public class BaseProduct : IProduct
+    public class Product : IProduct
     {
         public int Id { get; }
 
         public virtual ProductType ProductType { get; }
 
-        public ProductName ProductName { get; set; }
+        public ProductName ProductName { get; set; } = new ProductName();
 
-        public ProductSKU ProductSKU { get; set; }
+        public ProductSKU ProductSKU { get; set; } = new ProductSKU();
 
         public bool Active { get; set; }
 
-        public ProductPricing PriceInformation { get; set; }
+        public ProductPricing PriceInformation { get; set; } = new ProductPricing();
 
-        public List<ProductMedia> ProductMedia { get; set; }
+        public List<ProductMedia> ProductMedia { get; set; } = new List<ProductMedia>();
 
-        public List<ProductDescription> Descriptions { get; set; }
+        public List<ProductDescription> Descriptions { get; set; } = new List<ProductDescription>();
 
         public bool TemporaryWithLifetime { get; set; }
 
@@ -28,29 +28,29 @@ namespace Watermark.Models.Products
 
         public ProductTemplate Template { get; set; }
 
-        public List<Site> Sites { get; set; }
+        public List<Site> Sites { get; set; } = new List<Site>();
 
-        public ProductSearchEngineOptimisation SearchEngineOptimisationOptions { get; set; }
+        public ProductSearchEngineOptimisation SearchEngineOptimisationOptions { get; set; } = new ProductSearchEngineOptimisation();
 
-        public List<ProductCategory> ProductCategories { get; set; }
+        public List<ProductCategory> ProductCategories { get; set; } = new List<ProductCategory>();
 
-        public ProductStockLevel StockLevels { get; set; }
+        public ProductStockLevel StockLevels { get; set; } = new ProductStockLevel();
 
-        public List<ProductAttribute> ProductAttributes { get; set; }
+        public List<ProductAttribute> ProductAttributes { get; set; } = new List<ProductAttribute>();
 
-        public List<IProduct> RelatedProducts { get; set; }
+        public List<Product> RelatedProducts { get; set; } = new List<Product>();
 
-        public List<IProduct> UpsellProducts { get; set; }
+        public List<Product> UpsellProducts { get; set; } = new List<Product>();
 
-        public List<IProduct> CrossSellProducts { get; set; }
+        public List<Product> CrossSellProducts { get; set; } = new List<Product>();
 
-        public List<ProductReview> Reviews { get; set; }
+        public List<ProductReview> Reviews { get; set; } = new List<ProductReview>();
 
-        public List<ProductConfiguration> Configurations { get; set; }
+        public List<ProductConfiguration> Configurations { get; set; } = new List<ProductConfiguration>();
 
-        public List<ProductDeliveryOption> DeliveryOptions { get; set; }
+        public List<ProductDeliveryOption> DeliveryOptions { get; set; } = new List<ProductDeliveryOption>();
 
-        public List<ProductSettingOverride> SettingOverrides { get; set; }
+        public List<ProductSettingOverride> SettingOverrides { get; set; } = new List<ProductSettingOverride>();
 
         public bool HasCategories => ProductCategories.Any();
 

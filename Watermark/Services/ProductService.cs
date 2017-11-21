@@ -1,25 +1,27 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Watermark.Models.Products.Contracts;
+using Watermark.Models.Products;
+using Watermark.Repository.Contracts;
 using Watermark.Services.Contracts;
 
 namespace Watermark.Services
 {
     public class ProductService : IProductService
     {
+        private IProductRepository ProductRepository { get; set; }
 
-        public ProductService()
+        public ProductService(IProductRepository productRepository)
         {
+            ProductRepository = productRepository;
         }
 
-        public Task<List<IProduct>> GetAllProducts()
+        public IEnumerable<Product> GetAllProducts()
         {
-            return null;
+            return ProductRepository.GetAllProducts();
         }
 
-        public async Task<IProduct> CreateProduct(IProduct product)
+        public Product GetProductById(int id)
         {
-            return null;
+            return ProductRepository.GetProductById(id);
         }
     }
 }

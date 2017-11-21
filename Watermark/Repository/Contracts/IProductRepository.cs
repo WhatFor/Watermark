@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using Watermark.Models.Products;
 
-namespace Watermark.Services.Contracts
+namespace Watermark.Repository.Contracts
 {
-    public interface IProductService
+    public interface IProductRepository
     {
         IEnumerable<Product> GetAllProducts();
 

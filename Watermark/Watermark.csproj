@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Controllers\" />
     <Folder Include="Pages\Admin\Activity\" />
     <Folder Include="Pages\Admin\CMS\" />
     <Folder Include="Pages\Admin\Customers\" />

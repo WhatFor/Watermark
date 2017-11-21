@@ -5,7 +5,7 @@ namespace Watermark.Pages.Admin
 {
     public class ErrorModel : PageModel
     {
-        public async Task OnGetAsync()
+        public void OnGet()
         {
 
         }
