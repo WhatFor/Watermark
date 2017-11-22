@@ -7,26 +7,23 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="stylesheet" href="/assets/examples/css/theme-customizer.css">
 
-    <script src="/assets/examples/js/theme-customizer.js"></script>
     <link rel="stylesheet" href="/assets/vendor/css/hamburgers.css">
-    <link rel="stylesheet" href="/assets/vendor/bower_components/perfect-scrollbar/css/perfect-scrollbar.min.css">
     <link rel="stylesheet" href="/assets/vendor/bower_components/switchery/dist/switchery.min.css">
     <link rel="stylesheet" href="/assets/vendor/bower_components/sweetalert/dist/sweetalert.css">
     <!-- site-wide styles -->
     <link rel="stylesheet" href="/assets/vendor/css/bootstrap.css">
     <link rel="stylesheet" href="/css/site.css">
+    <link rel="stylesheet" href="/css/custom.css">
     <!-- plugins for the current page -->
     <link rel="stylesheet" href="/assets/vendor/bower_components/chartist/dist/chartist.min.css">
-    <link rel="stylesheet" href="/assets/vendor/jvectormap/jquery-jvectormap.css">
-    <link rel="stylesheet" href="/assets/vendor/owl-carousel/owl.carousel.css">
     <!-- current page styles -->
-    <link rel="stylesheet" href="/assets/examples/css/dashboards/dashboard.v1.css">
     <link rel="stylesheet" href="/assets/vendor/bower_components/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/assets/vendor/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600">
     <script src="/assets/vendor/bower_components/breakpoints.js/dist/breakpoints.min.js"></script>
+
+    @RenderSection("Styles");
 
     <script>Breakpoints({ xs: { min: 0, max: 575 }, sm: { min: 576, max: 767 }, md: { min: 768, max: 991 }, lg: { min: 992, max: 1199 }, xl: { min: 1200, max: Infinity } });</script>
 
@@ -46,35 +43,31 @@
         <!-- /.navbar-header -->
         <div class="collapse navbar-collapse" id="site-navbar-collapse">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item hidden-sm-down px-3 d-flex align-items-center"><button data-toggle="menubar-fold" class="hamburger hamburger--arrowalt is-active js-hamburger" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></button></li>
+                <li class="nav-item hidden-sm-down px-3 d-flex align-items-center"><button data-toggle="menubar-fold" class="hamburger hamburger--arrow is-active js-hamburger" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></button></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="nav-icon fa fa-info-circle"></i> <span class="badge badge-circle badge-info">4</span></a>
-                    <div class="media-list dropdown-menu p-0" data-plugin="dropdownCaret">
+                    <div class="media-list dropdown-menu dropdown-menu-wide p-0" data-plugin="dropdownCaret">
                         <div class="dropdown-item dropdown-menu-cap d-flex"><span class="mr-auto my-1">You Have 4 Unread Notifications</span> <a href="#" class="btn btn-sm btn-light my-1">See all</a></div>
                         <div class="scroll-container">
                             <a href="javascript:void(0)" class="media dropdown-item">
-                                <span class="avatar bg-success" data-plugin="firstLitter" data-target="#message-1"></span>
                                 <div class="media-body">
                                     <h6 class="media-heading" id="message-1">Mohamed Ali</h6>
                                     <small>Lorem ipsum dolor sit amet, Lorem ipsum dolor.</small>
                                 </div>
                             </a>
                             <a href="javascript:void(0)" class="media dropdown-item">
-                                <span class="avatar bg-warning" data-plugin="firstLitter" data-target="#message-2"></span>
                                 <div class="media-body">
                                     <h6 class="media-heading" id="message-2">Sophia Smith</h6>
                                     <small>Lorem ipsum dolor sit amet, Lorem ipsum dolor.</small>
                                 </div>
                             </a>
                             <a href="javascript:void(0)" class="media dropdown-item">
-                                <span class="avatar bg-primary" data-plugin="firstLitter" data-target="#message-3"></span>
                                 <div class="media-body">
                                     <h6 class="media-heading" id="message-3">Sarah Adams</h6>
                                     <small>Lorem ipsum dolor sit amet, Lorem ipsum dolor.</small>
                                 </div>
                             </a>
                             <a href="javascript:void(0)" class="media dropdown-item">
-                                <span class="avatar bg-danger" data-plugin="firstLitter" data-target="#message-4"></span>
                                 <div class="media-body">
                                     <h6 class="media-heading" id="message-4">John Doe</h6>
                                     <small>Lorem ipsum dolor sit amet, Lorem ipsum dolor.</small>
@@ -87,25 +80,22 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="nav-icon fa fa-exclamation-triangle"></i> <span class="badge badge-circle badge-warning">3</span></a>
-                    <div class="media-list dropdown-menu p-0" data-plugin="dropdownCaret">
+                    <div class="media-list dropdown-menu dropdown-menu-wide p-0" data-plugin="dropdownCaret">
                         <div class="dropdown-item dropdown-menu-cap d-flex"><span class="mr-auto my-1">You Have 3 Unread Messages</span> <a href="#" class="btn btn-sm btn-light my-1">See all</a></div>
                         <div class="scroll-container">
                             <a href="javascript:void(0)" class="media dropdown-item">
-                                <div class="avatar"><img src="/assets/global/images/203.jpg" alt=""> <span class="badge badge-success">5</span></div>
                                 <div class="media-body">
                                     <h6 class="media-heading">Ahmed Gamal</h6>
                                     <small>Lorem ipsum dolor sit amet, Lorem ipsum dolor.</small>
                                 </div>
                             </a>
                             <a href="javascript:void(0)" class="media dropdown-item">
-                                <div class="avatar"><img src="/assets/global/images/101.jpg" alt=""> <span class="badge badge-success">9</span></div>
                                 <div class="media-body">
                                     <h6 class="media-heading">Nick Pettit</h6>
                                     <small>Lorem ipsum dolor sit amet, Lorem ipsum dolor.</small>
                                 </div>
                             </a>
                             <a href="javascript:void(0)" class="media dropdown-item">
-                                <div class="avatar"><img src="/assets/global/images/202.jpg" alt=""> <span class="badge badge-success">1</span></div>
                                 <div class="media-body">
                                     <h6 class="media-heading">Media heading</h6>
                                     <small>Lorem ipsum dolor sit amet, Lorem ipsum dolor.</small>
@@ -339,24 +329,10 @@
     <script src="/assets/vendor/bower_components/waypoints/lib/shortcuts/sticky.min.js"></script>
     <script src="/assets/vendor/bower_components/counterup/jquery.counterup.min.js"></script>
     <script src="/assets/vendor/bower_components/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="/assets/vendor/js/jquery.sparkline.min.js"></script>
-    <script src="/assets/global/js/plugins/dropdown-caret.js"></script>
-    <script src="/assets/global/js/plugins/firstlitter.js"></script>
-    <script src="/assets/global/js/plugins/video-modal.js"></script>
-    <script src="/assets/vendor/bower_components/chartist/dist/chartist.min.js"></script>
-    <script src="/assets/vendor/jvectormap/jquery-jvectormap.min.js"></script>
-    <script src="/assets/vendor/jvectormap/maps/jquery-jvectormap-world-mill.js"></script>
-    <script src="/assets/vendor/flot/jquery.flot.min.js"></script>
-    <script src="/assets/vendor/flot/jquery.flot.resize.min.js"></script>
-    <script src="/assets/vendor/flot/jquery.flot.tooltip.min.js"></script>
-    <script src="/assets/vendor/flot/jquery.flot.categories.min.js"></script>
-    <script src="/assets/vendor/bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
     <script src="/assets/vendor/bower_components/peity/jquery.peity.min.js"></script>
-    <script src="/assets/vendor/owl-carousel/owl.carousel.min.js"></script>
     <script src="/assets/global/js/main.js"></script>
     <script src="/js/site.js"></script>
     <script src="/js/navbar.js"></script>
     <script src="/js/menubar.js"></script>
-    <script src="/assets/examples/js/dashboards/dashboard.v1.js"></script>
 </body>
 </html>

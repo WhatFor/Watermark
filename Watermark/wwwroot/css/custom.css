@@ -1,0 +1,14 @@
+body {
+    background: #fff
+}
+
+    body .card {
+        border: 1px solid #eee;
+        padding: 2rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, .02);
+        margin-left: 10px;
+    }
+
+.dropdown-menu-wide {
+    min-width: 22rem;
+}

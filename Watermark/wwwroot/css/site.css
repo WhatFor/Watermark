@@ -3803,7 +3803,10 @@ body:not(.menubar-fold) .site-menubar {
 
 .site-header .breadcrumb,
 .site-header .jumbotron {
-    background: #f5f6f8
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-top: none;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.03);
 }
 
 .site-header .breadcrumb {
@@ -3820,11 +3823,11 @@ body:not(.menubar-fold) .site-menubar {
 }
 
 .site-menu li a {
-    color: #97adcf
+    color: #b1c4e2
 }
 
 .site-menu .menu-icon {
-    color: #7591bf
+    color: #b1c4e2
 }
 
 .site-menu li.active,

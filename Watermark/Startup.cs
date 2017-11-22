@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
-using Watermark.Extensions;
 using Watermark.Repository;
 using Watermark.Repository.Contracts;
 using Watermark.Services;
@@ -22,7 +22,6 @@ namespace WatermarkApi
             .CreateLogger();
 
             Configuration = configuration;
-            DefaultConnectionString = BuildConnectionString();
         }
 
         public IConfiguration Configuration { get; }
@@ -31,11 +30,14 @@ namespace WatermarkApi
 
         public void ConfigureServices(IServiceCollection services)
         {
+            // Register DbContext
+            services.AddDbContext<WatermarkDbContext>(o => o.UseSqlServer(Configuration.GetConnectionString("Default")));
+
             // Register Services
             services.AddScoped<IProductService, ProductService>();
 
             // Register Repositories
-            services.AddScoped<IProductRepository, ProductRepository>(builder => new ProductRepository(DefaultConnectionString));
+            services.AddScoped<IProductRepository, ProductRepository>();
             
             // .NET Core
             services.AddMvc();
@@ -53,13 +55,6 @@ namespace WatermarkApi
                 app.UseExceptionHandler("/Error");
             }
 
-            app.EnsureDbCreated(Configuration.GetValue<string>("DefaultDatabaseConfiguration:Server"),
-                                Configuration.GetValue<string>("DefaultDatabaseConfiguration:DatabaseName"),
-                                Configuration.GetValue<bool>("DefaultDatabaseConfiguration:TrustedConnection"),
-                                Configuration.GetValue<bool>("DefaultDatabaseConfiguration:MultipleActiveResultSets"));
-
-            app.MigrateDatabase(DefaultConnectionString, env.ContentRootPath);
-
             app.UseStaticFiles();
 
             app.UseMvc(routes =>
@@ -68,14 +63,6 @@ namespace WatermarkApi
                     name: "default",
                     template: "{controller}/{action=Index}/{id?}");
             });
-        }
-
-        private string BuildConnectionString()
-        {
-            return $@"Data Source={Configuration.GetValue<string>("DefaultDatabaseConfiguration:Server")};
-                      Initial Catalog={Configuration.GetValue<string>("DefaultDatabaseConfiguration:DatabaseName")};
-                      Trusted_Connection={Configuration.GetValue<bool>("DefaultDatabaseConfiguration:TrustedConnection")};
-                      MultipleActiveResultSets={Configuration.GetValue<bool>("DefaultDatabaseConfiguration:MultipleActiveResultSets")}";
         }
     }
 }

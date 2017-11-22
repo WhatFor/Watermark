@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Watermark.Models.Products
 {
     public class ProductCategory
     {
+        [Key]
         public int Id { get; set; }
 
         public int ParentId { get; set; }

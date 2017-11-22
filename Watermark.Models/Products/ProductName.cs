@@ -1,11 +1,17 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.RegularExpressions;
 
 namespace Watermark.Models.Products
 {
     public class ProductName
     {
+        [Key]
+        public int Id { get; set; }
+
         public string DisplayName { get; set; }
 
+        [NotMapped]
         public string SafeName  => GetSafeName();
 
         private string GetSafeName()
