@@ -4,3 +4,4 @@
 */**/obj/Debug
 */**/obj/Release
 Watermark/Logs/**/*
+Watermark/obj/Debug/**/*

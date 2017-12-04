@@ -4,9 +4,10 @@ body {
 
     body .card {
         border: 1px solid #eee;
-        padding: 2rem;
+        padding: 1rem;
         box-shadow: 0 2px 4px rgba(0, 0, 0, .02);
-        margin-left: 10px;
+        margin-left: 5px;
+        margin-right: 5px;
     }
 
 .dropdown-menu-wide {

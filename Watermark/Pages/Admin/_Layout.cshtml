@@ -1,4 +1,8 @@
-﻿<!doctype html>
+﻿@{
+    var actionName = ((Microsoft.AspNetCore.Mvc.RazorPages.CompiledPageActionDescriptor)ViewContext.ActionDescriptor).DisplayName;
+}
+
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -23,7 +27,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600">
     <script src="/assets/vendor/bower_components/breakpoints.js/dist/breakpoints.min.js"></script>
 
-    @RenderSection("Styles");
+    @RenderSection("Styles")
 
     <script>Breakpoints({ xs: { min: 0, max: 575 }, sm: { min: 576, max: 767 }, md: { min: 768, max: 991 }, lg: { min: 992, max: 1199 }, xl: { min: 1200, max: Infinity } });</script>
 
@@ -168,7 +172,7 @@
                             <i class="menu-icon zmdi zmdi-collection-text zmdi-hc-lg"></i> <span class="menu-text">Catalog</span> <i class="menu-caret zmdi zmdi-hc-sm zmdi-chevron-right"></i>
                         </a>
                         <ul class="submenu">
-                            <li><a asp-page="/Admin/Catalog/Products"><span class="menu-text">Products</span></a></li>
+                            <li><a asp-page="/Admin/Catalog/ProductsOverview"><span class="menu-text">Products</span></a></li>
                         </ul>
                     </li>
                     <li>
@@ -330,9 +334,13 @@
     <script src="/assets/vendor/bower_components/counterup/jquery.counterup.min.js"></script>
     <script src="/assets/vendor/bower_components/sweetalert/dist/sweetalert.min.js"></script>
     <script src="/assets/vendor/bower_components/peity/jquery.peity.min.js"></script>
+    <script src="/js/jquery.unobtrusive-ajax.min.js"></script>
     <script src="/assets/global/js/main.js"></script>
     <script src="/js/site.js"></script>
     <script src="/js/navbar.js"></script>
     <script src="/js/menubar.js"></script>
+
+    @RenderSection("Scripts")
+
 </body>
 </html>

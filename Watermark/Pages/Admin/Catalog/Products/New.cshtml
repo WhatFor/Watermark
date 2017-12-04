@@ -1,0 +1,42 @@
+﻿@page
+@model Watermark.Pages.Admin.Catalog.Products.NewModel
+@{
+    ViewData["Title"] = "Add Product";
+    ViewData["Header"] = "Add a Product";
+    ViewData["Tagline"] = "Add a new product.";
+    ViewData["DisplayStats"] = false;
+}
+
+@section Styles
+{
+    <link href="@Url.Content("~/pages/products/page.css")" rel="stylesheet" type="text/css" />
+}
+
+<div class="row">
+
+    <form asp-controller="Products" asp-action="AddProductAsync"
+          data-ajax-begin="onBegin" data-ajax-complete="onComplete"
+          data-ajax-failure="onFailed" data-ajax-success="onSuccess"
+          data-ajax="true" data-ajax-method="POST">
+
+        <div class="form-group card">
+            <div class="row">
+                @Html.LabelFor(m => m.Product.ProductName.DisplayName, "Name")
+                @Html.TextBoxFor(m => m.Product.ProductName.DisplayName)
+            </div>
+
+            <div class="row">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+
+        <p id="results"></p>
+
+    </form>
+
+</div>
+
+@section Scripts
+{
+    <script src="@Url.Content("/pages/products/page.js")"></script>
+}

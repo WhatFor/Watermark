@@ -6,11 +6,11 @@ using Watermark.Services.Contracts;
 
 namespace Watermark.Pages.Admin.Catalog
 {
-    public class ProductsModel : PageModel
+    public class ProductsOverviewModel : PageModel
     {
         private IProductService ProductService;
 
-        public ProductsModel(IProductService productService)
+        public ProductsOverviewModel(IProductService productService)
         {
             ProductService = productService;
         }
