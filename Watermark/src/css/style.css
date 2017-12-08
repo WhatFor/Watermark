@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /*!
  * CoreUI - Open Source Bootstrap Admin Template
  * @version v1.0.6
@@ -8032,14 +8032,12 @@ base-chart.chart {
     height: 10px; }
   .sidebar .nav-item {
     position: relative;
-    margin: 0;
-    transition: background .3s ease-in-out; }
+    margin: 0; }
   .sidebar .nav-dropdown-items {
     max-height: 0;
     padding: 0;
     margin: 0;
-    overflow-y: hidden;
-    transition: max-height .3s ease-in-out; }
+    overflow-y: hidden; }
     .sidebar .nav-dropdown-items .nav-item {
       padding: 0;
       list-style: none; }
