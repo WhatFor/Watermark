@@ -1,8 +1,6 @@
 .vs/**/*
-*/**/bin/Debug
-*/**/bin/Release
-*/**/obj/Debug
-*/**/obj/Release
-Watermark/Logs/**/*
-obj\Debug\**\*
+Logs
+obj
+bin
 node_modules
+wwwroot
