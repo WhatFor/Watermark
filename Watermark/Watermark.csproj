@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,6 +17,7 @@
     <Folder Include="Pages\Admin\Sales\" />
     <Folder Include="Pages\Admin\System\" />
     <Folder Include="Pages\Site\" />
+    <Folder Include="wwwroot\" />
   </ItemGroup>
 
   <ItemGroup>

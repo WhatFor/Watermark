@@ -4,4 +4,5 @@
 */**/obj/Debug
 */**/obj/Release
 Watermark/Logs/**/*
-Watermark/obj/Debug/**/*
+obj\Debug\**\*
+node_modules
