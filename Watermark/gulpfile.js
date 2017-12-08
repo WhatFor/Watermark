@@ -14,9 +14,9 @@ var replace = require('gulp-replace');
 // Define our output paths
 var paths;
 paths = gulp.paths = {
-  dist: 'wwwroot/dist/',
+  dist: 'wwwroot/',
   src: 'src/',
-  vendors: 'wwwroot/dist/vendors/'
+  vendors: 'wwwroot/vendors/'
 };
 
 // Import our array of Vendor scripts

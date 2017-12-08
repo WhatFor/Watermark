@@ -16,6 +16,9 @@
     <Folder Include="Pages\Admin\Sales\" />
     <Folder Include="Pages\Admin\System\" />
     <Folder Include="Pages\Site\" />
+    <Folder Include="src\js\pages\" />
+    <Folder Include="src\vendors\css\" />
+    <Folder Include="src\vendors\js\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
