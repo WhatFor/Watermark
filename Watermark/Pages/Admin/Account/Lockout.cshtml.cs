@@ -1,0 +1,12 @@
+using Microsoft.AspNetCore.Mvc.RazorPages;
+
+namespace Watermark.Pages.Admin.Account
+{
+    public class LockoutModel : PageModel
+    {
+        public void OnGet()
+        {
+
+        }
+    }
+}

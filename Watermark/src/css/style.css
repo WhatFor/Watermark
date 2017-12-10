@@ -554,6 +554,7 @@ pre {
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
+  margin-top: 24px;
   margin-right: auto;
   margin-left: auto; }
 
@@ -7860,6 +7861,7 @@ base-chart.chart {
     height: 23px;
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23536c79' stroke-width='2.25' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"); }
   .app-header.navbar .navbar-nav {
+      margin-right: 10px;
     -ms-flex-direction: row;
         flex-direction: row;
     -ms-flex-align: center;
@@ -8000,7 +8002,7 @@ base-chart.chart {
     overflow-x: hidden;
     overflow-y: auto;
     -ms-overflow-style: -ms-autohiding-scrollbar;
-    width: 200px; }
+    width: 250px; }
     .sidebar .sidebar-nav::-webkit-scrollbar {
       position: absolute;
       width: 10px;
@@ -8018,7 +8020,7 @@ base-chart.chart {
       border-style: solid;
       border-width: 1px 2px; }
   .sidebar .nav {
-    width: 200px;
+    width: 250px;
     -ms-flex-direction: column;
         flex-direction: column;
     min-height: 100%; }
@@ -9074,11 +9076,11 @@ app-root {
 .sidebar-fixed .sidebar {
   position: fixed;
   z-index: 1019;
-  width: 200px;
+  width: 250px;
   height: calc(100vh - 55px); }
 
 .sidebar-fixed .main, .sidebar-fixed .app-footer {
-  margin-left: 200px; }
+  margin-left: 250px; }
 
 .sidebar-fixed.sidebar-hidden .main, .sidebar-fixed.sidebar-hidden .app-footer {
   margin-left: 0; }
