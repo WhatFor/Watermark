@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Watermark.Models;
+using Watermark.Models.Admin.Notifications;
 using Watermark.Models.Products;
 
 namespace Watermark.Repository
@@ -14,5 +15,7 @@ namespace Watermark.Repository
 
         // Create Domain Model DbSets
         public DbSet<Product> Products { get; set; }
+
+        public DbSet<Notification> Notifications { get; set; }
     }
 }

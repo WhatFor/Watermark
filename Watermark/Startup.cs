@@ -37,10 +37,14 @@ namespace WatermarkApi
             services.AddDbContext<WatermarkDbContext>(o => o.UseSqlServer(Configuration.GetConnectionString("Default")));
 
             // Register Services
+            services.AddScoped<INotificationsService, NotificationsService>();
+            services.AddScoped<IApplicationUserService, ApplicationUserService>();
             services.AddScoped<IProductService, ProductService>();
             services.AddSingleton<IEmailSenderService, EmailSenderService>();
 
             // Register Repositories
+            services.AddScoped<INotificationsRepository, NotificationsRepository>();
+            services.AddScoped<IApplicationUserRepository, ApplicationUserRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
 
             // Authentication Setup

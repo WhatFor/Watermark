@@ -10,6 +10,34 @@
 {
 }
 
+<!-- First Login Tutorial -->
+@if (Model.IsFirstLogin)
+{
+    <div class="card" id="step1">
+        <div class="card-body">
+            <p><strong>Hello!</strong> Welcome to Watermark.</p>
+        </div>
+        <div class="card-footer">
+            <button class="btn" id="step1next">Next</button>
+        </div>
+    </div>
+
+    <div class="card" id="step2" style="display:none;">
+        <div class="card-body">
+            <p>This is step 2. You might be wondering when this tutorial ends, because no one likes them...</p>
+        </div>
+        <div class="card-footer">
+            <form asp-controller="Account" asp-action="SetUserFirstLoginTutorialComplete" 
+                                                  data-ajax-complete="onTutorialComplete" 
+                                                  data-ajax="true" 
+                                                  data-ajax-method="POST">
+                <button type="submit">Finish</button>
+            </form>
+        </div>
+    </div>
+}
+<!-- /First Login Tutorial -->
+
 <div class="card">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sed justo ex. Morbi imperdiet porta purus eu ornare. Nullam eget ligula leo. Cras commodo faucibus elit, vitae congue tellus interdum vitae. Aenean eget suscipit felis, ut bibendum dolor. Quisque quis odio id neque cursus congue. Curabitur mattis dolor leo, pretium venenatis mauris eleifend eget. Cras ut auctor purus, vel tristique neque. Vivamus lectus lectus, scelerisque sed felis nec, interdum scelerisque quam. Sed ultrices, purus ut elementum rhoncus, ex felis posuere massa, id mollis nibh nunc sollicitudin ipsum.
 
@@ -24,4 +52,5 @@
 
 @section Scripts
 {
+    <script src="~/js/pages/dashboard.js"></script>
 }

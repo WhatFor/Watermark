@@ -40,13 +40,32 @@
                 <a class="nav-link" href="#">Settings</a>
             </li>
         </ul>
+
+        <!-- Notifications -->
         <ul class="nav navbar-nav ml-auto">
-            <li class="nav-item d-md-down-none">
-                <a class="nav-link" href="#"><i class="icon-bell"></i><span class="badge badge-pill badge-danger">5</span></a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    <i class="icon-bell"></i><span id="notification-count" class="badge badge-pill badge-danger">...</span>
+                </a>
+                <div class="dropdown-menu">
+                    <div id="dropdown-notifications" class="dropdown-header text-left">
+                        <strong>Notifications</strong>
+                        <form asp-controller="Notifications" asp-action="MarkAllRead"
+                              data-ajax-complete="onMarkAllRead"
+                              data-ajax="true"
+                              data-ajax-method="POST">
+                            <button type="submit" class="dropdown-item"><i class="fa fa-comments"></i> Mark Read</button>
+                        </form>
+                    </div>
+                </div>
             </li>
+            <!-- /Notifications -->
+
             <li class="nav-item d-md-down-none">
                 <a class="nav-link" href="#"><i class="icon-settings"></i></a>
             </li>
+
+            <!-- Account -->
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                     <img src="~/img/6.jpg" class="img-avatar" alt="admin@@bootstrapmaster.com">
@@ -73,6 +92,7 @@
                     </form>
                 </div>
             </li>
+            <!-- /Account -->
         </ul>
         }
     </header>
@@ -210,7 +230,7 @@
     @if (User.Identity.IsAuthenticated)
     {
     <footer class="app-footer">
-        <span>&copy; @DateTime.Now.Year Watermark.</span>
+        <span>&copy; @DateTime.Now.Year Watermark</span>
         <span class="ml-auto">Powered by <a href="http://coreui.io">CoreUI</a></span>
     </footer>
     }
@@ -220,6 +240,7 @@
     <script src="~/vendors/js/popper.min.js"></script>
     <script src="~/vendors/js/bootstrap.min.js"></script>
     <script src="~/vendors/js/pace.min.js"></script>
+    <script src="~/js/layout.js"></script>
     <script src="~/js/app.js"></script>
     @RenderSection("Scripts")
 </body>

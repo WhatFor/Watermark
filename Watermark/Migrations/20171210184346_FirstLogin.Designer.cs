@@ -14,9 +14,10 @@ using Watermark.Repository;
 namespace Watermark.Migrations
 {
     [DbContext(typeof(WatermarkDbContext))]
-    partial class WatermarkDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171210184346_FirstLogin")]
+    partial class FirstLogin
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -129,28 +130,6 @@ namespace Watermark.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("Watermark.Models.Admin.Notifications.Notification", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Body");
-
-                    b.Property<DateTimeOffset>("DateCreated");
-
-                    b.Property<DateTimeOffset?>("DateRead");
-
-                    b.Property<bool>("Read");
-
-                    b.Property<string>("Title");
-
-                    b.Property<string>("UserId");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Notifications");
                 });
 
             modelBuilder.Entity("Watermark.Models.ApplicationUser", b =>

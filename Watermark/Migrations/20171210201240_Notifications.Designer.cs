@@ -14,9 +14,10 @@ using Watermark.Repository;
 namespace Watermark.Migrations
 {
     [DbContext(typeof(WatermarkDbContext))]
-    partial class WatermarkDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171210201240_Notifications")]
+    partial class Notifications
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -140,7 +141,7 @@ namespace Watermark.Migrations
 
                     b.Property<DateTimeOffset>("DateCreated");
 
-                    b.Property<DateTimeOffset?>("DateRead");
+                    b.Property<DateTimeOffset>("DateRead");
 
                     b.Property<bool>("Read");
 

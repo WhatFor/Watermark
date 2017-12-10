@@ -14,9 +14,10 @@ using Watermark.Repository;
 namespace Watermark.Migrations
 {
     [DbContext(typeof(WatermarkDbContext))]
-    partial class WatermarkDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171210201726_Notifications_NullableDateRead")]
+    partial class Notifications_NullableDateRead
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
