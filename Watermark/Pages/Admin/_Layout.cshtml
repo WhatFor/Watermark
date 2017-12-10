@@ -27,6 +27,8 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand" href="/Admin/Dashboard"></a>
+        @if (User.Identity.IsAuthenticated)
+        {
         <ul class="nav navbar-nav d-md-down-none">
             <li class="nav-item px-3">
                 <a class="nav-link" href="#">Dashboard</a>
@@ -66,12 +68,17 @@
                     <a class="dropdown-item" href="#"><i class="fa fa-file"></i> Projects<span class="badge badge-primary">42</span></a>
                     <div class="divider"></div>
                     <a class="dropdown-item" href="#"><i class="fa fa-shield"></i> Lock Account</a>
-                    <a class="dropdown-item" href="#"><i class="fa fa-lock"></i> Logout</a>
+                    <form id="logout" asp-controller="Account" asp-action="Logout" method="post">
+                        <button type="submit" class="dropdown-item"><i class="fa fa-lock"></i> Logout</button>
+                    </form>
                 </div>
             </li>
         </ul>
+        }
     </header>
     <div class="app-body">
+        @if (User.Identity.IsAuthenticated)
+        {
         <div class="sidebar">
             <nav class="sidebar-nav">
                 <ul class="nav">
@@ -187,6 +194,7 @@
             </nav>
             <button class="sidebar-minimizer brand-minimizer" type="button"></button>
         </div>
+        }
 
         <!-- Main content -->
         <main class="main">
@@ -199,10 +207,13 @@
         </main>
     </div>
 
+    @if (User.Identity.IsAuthenticated)
+    {
     <footer class="app-footer">
         <span>&copy; @DateTime.Now.Year Watermark.</span>
         <span class="ml-auto">Powered by <a href="http://coreui.io">CoreUI</a></span>
     </footer>
+    }
 
     <script src="~/vendors/js/jquery.min.js"></script>
     <script src="~/vendors/js/jquery.unobtrusive-ajax.min.js"></script>
