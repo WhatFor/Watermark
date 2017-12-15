@@ -10,7 +10,6 @@ var onComplete = function(){
  
 var onSuccess = function (context) {
     results.html("<p>Complete!</p>")
-    alert(context);
 };
  
 var onFailed = function (context) {

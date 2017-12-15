@@ -3,25 +3,29 @@
 
         type: 'GET',
 
-        url: 'Notifications/GetNotifications',
+        url: '/Admin/Notifications/GetNotifications',
         dataType: 'json',
         data: { count: 5 },
         success: function (data) {
             var items = '';
-            $.each(data, function (i, item) {
 
-                var rows =
-                    "<div class=\"dropdown-item\">" +
-                    item.title +
-                    " - " +
-                    item.body +
-                    "</div >";
+            if (data.length > 0) {
+                $.each(data, function (i, item) {
 
-                $('#dropdown-notifications').append(rows);
-            });
+                    var rows =
+                        "<div class=\"dropdown-item\">" +
+                        item.title +
+                        " - " +
+                        item.body +
+                        "</div >";
+
+                    $('#notification-count').addClass("badge-warning");
+                    $('#notification-count').show();
+                    $('#dropdown-notifications').append(rows);
+                });
+            }
 
             $('#notification-count').text(data.length);
-
         },
         error: function (ex) {
             var r = jQuery.parseJSON(response.responseText);
@@ -35,6 +39,7 @@
 });
 
 var onMarkAllRead = function () {
-    $('#notification-count').text("0");
+    $('#notification-count').hide();
+    $('.dropdown-notification-container').removeClass("show");
     $('#dropdown-notifications').children('div').remove();
 };

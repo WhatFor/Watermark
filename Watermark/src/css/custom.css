@@ -1,0 +1,26 @@
+﻿#dropdown-notifications {
+    padding: 0;
+    border-bottom: none;
+}
+
+.dropdown-notification-container {
+    min-width: 300px;
+    left: -250px;
+}
+
+#dropdown-notifications-mark-read {
+    background-color: #536c79;
+    border-bottom: none;
+    color: white;
+    padding: 4px 10px;
+    height: 30px;
+}
+
+#notification-count {
+    top: 35%;
+    left: 45%;
+}
+
+.dropdown-toggle::after {
+    color: white;
+}

@@ -18,6 +18,7 @@
     <link href="~/vendors/css/font-awesome.min.css" rel="stylesheet">
     <link href="~/vendors/css/simple-line-icons.min.css" rel="stylesheet">
     <link href="~/css/style.css" rel="stylesheet">
+    <link href="~/css/custom.css" rel="stylesheet">
     @RenderSection("Styles")
 </head>
 
@@ -45,16 +46,15 @@
         <ul class="nav navbar-nav ml-auto">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                    <i class="icon-bell"></i><span id="notification-count" class="badge badge-pill badge-danger">...</span>
+                    <i class="icon-bell"></i><span id="notification-count" class="badge badge-pill badge-warning" style="display:none;"> </span>
                 </a>
-                <div class="dropdown-menu">
+                <div class="dropdown-menu dropdown-notification-container">
                     <div id="dropdown-notifications" class="dropdown-header text-left">
-                        <strong>Notifications</strong>
                         <form asp-controller="Notifications" asp-action="MarkAllRead"
                               data-ajax-complete="onMarkAllRead"
                               data-ajax="true"
                               data-ajax-method="POST">
-                            <button type="submit" class="dropdown-item"><i class="fa fa-comments"></i> Mark Read</button>
+                            <button id="dropdown-notifications-mark-read" type="submit" class="dropdown-item"><i class="fa fa-comments"></i> Mark Read</button>
                         </form>
                     </div>
                 </div>
