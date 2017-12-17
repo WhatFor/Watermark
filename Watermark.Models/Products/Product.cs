@@ -11,6 +11,8 @@ namespace Watermark.Models.Products
         [Key]
         public int Id { get; set; }
 
+        [Required]
+        [Display(Name = "Product Type")]
         public ProductType ProductType { get; set;  }
 
         public ProductName ProductName { get; set; } = new ProductName();

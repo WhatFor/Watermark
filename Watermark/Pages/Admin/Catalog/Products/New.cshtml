@@ -1,4 +1,8 @@
 ﻿@page
+
+@using Watermark.Models.Products;
+@using Watermark.Extensions.TagHelpers;
+
 @model Watermark.Pages.Admin.Catalog.Products.NewModel
 @{
     ViewData["Title"] = "Add Product";
@@ -19,12 +23,23 @@
                       data-ajax-begin="onBegin" data-ajax-complete="onComplete"
                       data-ajax-failure="onFailed" data-ajax-success="onSuccess"
                       data-ajax="true" data-ajax-method="POST">
+
                     <div class="form-group">
                         <div class="input-group">
-                            <span class="input-group-addon">Product Name</span>
-                            @Html.TextBoxFor(m => m.Product.ProductName.DisplayName, null, new { @class = "form-control" })
+
+                            <label class="input-group-addon" asp-for="Product.ProductSKU.SKU" hover-desc="kdsjf"></label>
+                            <input type="text" asp-for="Product.ProductSKU.SKU" class="form-control" />
+
+                            <label class="input-group-addon" asp-for="Product.ProductName.DisplayName"></label>
+                            <input type="text" asp-for="Product.ProductName.DisplayName" class="form-control" />
+
+                            <label class="input-group-addon" asp-for="Product.ProductType"></label>
+                            <select asp-for="Product.ProductType" asp-items="Html.GetEnumSelectList<ProductType>()" class="form-control" >
+                                <option selected disabled hidden></option>
+                            </select>
                         </div>
                     </div>
+
                     <div class="form-group">
                         <div class="input-group">
                             <input type="submit" value="Save" class="btn btn-primary" />

@@ -9,6 +9,8 @@ namespace Watermark.Models.Products
         [Key]
         public int Id { get; set; }
 
+        [Required]
+        [Display(Name = "Product Name")]
         public string DisplayName { get; set; }
 
         [NotMapped]
