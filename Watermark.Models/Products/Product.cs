@@ -12,13 +12,15 @@ namespace Watermark.Models.Products
         public int Id { get; set; }
 
         [Required]
-        [Display(Name = "Product Type")]
+        [Display(Name = "Product Type", Description = "The type of product - either physical or digital.")]
         public ProductType ProductType { get; set;  }
 
         public ProductName ProductName { get; set; } = new ProductName();
 
         public ProductSKU ProductSKU { get; set; } = new ProductSKU();
 
+        [Required]
+        [Display(Name = "Active Product", Description = "Wether the product is active or not. Inactive products will not be displayed.")]
         public bool Active { get; set; }
 
         public ProductPricing PriceInformation { get; set; } = new ProductPricing();

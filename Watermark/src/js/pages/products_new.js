@@ -1,4 +1,5 @@
-﻿let results = $('#results');
+﻿// Logic for AJAX form submission.
+let results = $('#results');
  
 var onBegin = function () {
     results.html("<h3>Loading...</h3>");

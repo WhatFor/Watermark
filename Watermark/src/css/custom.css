@@ -1,4 +1,5 @@
-﻿#dropdown-notifications {
+﻿/* Dropdown menu styling */
+#dropdown-notifications {
     padding: 0;
     border-bottom: none;
 }
@@ -23,4 +24,36 @@
 
 .dropdown-toggle::after {
     color: white;
+}
+
+
+/* Form item hover popup descriptions */
+.hover-desc-popup {
+    display: none;
+    position: absolute;
+    bottom: 40px;
+    left: 0px;
+    z-index: 2;
+    border: 1px solid #BCCAD1;
+    padding: 5px 10px;
+    background-color: #EEF1F4;
+    color: #171A1D;
+    overflow: visible;
+    min-width: 150px;
+    white-space: nowrap;
+}
+
+.hover-desc-label {
+    position: relative;
+}
+
+/* Styling for a form container to wrap a pill button */
+.switch-container {
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 1px solid #BCCAD1;
+}
+.switch-margin-top {
+    margin-top: 5px;
+    margin-bottom: 0;
 }

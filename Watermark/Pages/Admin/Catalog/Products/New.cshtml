@@ -24,20 +24,39 @@
                       data-ajax-failure="onFailed" data-ajax-success="onSuccess"
                       data-ajax="true" data-ajax-method="POST">
 
-                    <div class="form-group">
-                        <div class="input-group">
+                    <div class="form-group row">
 
-                            <label class="input-group-addon" asp-for="Product.ProductSKU.SKU" hover-desc="kdsjf"></label>
-                            <input type="text" asp-for="Product.ProductSKU.SKU" class="form-control" />
-
-                            <label class="input-group-addon" asp-for="Product.ProductName.DisplayName"></label>
+                        <div class="input-group col-md-4">
+                            <label class="input-group-addon" asp-for="Product.ProductName.DisplayName" hover-desc="@Model.Product.ProductName.DisplayName"></label>
                             <input type="text" asp-for="Product.ProductName.DisplayName" class="form-control" />
+                        </div>
 
-                            <label class="input-group-addon" asp-for="Product.ProductType"></label>
-                            <select asp-for="Product.ProductType" asp-items="Html.GetEnumSelectList<ProductType>()" class="form-control" >
+                        <div class="input-group col-md-4">
+                            <label class="input-group-addon" asp-for="Product.ProductSKU.SKU" hover-desc=@Model.Product.ProductSKU.SKU></label>
+                            <input type="text" asp-for="Product.ProductSKU.SKU" class="form-control" />
+                        </div>
+
+                        <div class="input-group col-md-4">
+                            <label class="input-group-addon" asp-for="Product.ProductType" hover-desc="@Model.Product.ProductType"></label>
+                            <select asp-for="Product.ProductType" asp-items="Html.GetEnumSelectList<ProductType>()" class="form-control">
                                 <option selected disabled hidden></option>
                             </select>
                         </div>
+                    </div>
+                    
+                    <div class="form-group row">
+
+                        <div class="input-group col-md-4">
+                            <label class="input-group-addon" asp-for="Product.Active" hover-desc="@Model.Product.Active"></label>
+                            <div class="switch-container">
+                                <label class="switch switch-default switch-pill switch-primary switch-margin-top">
+                                    <input asp-for="Product.Active" type="checkbox" class="switch-input" checked="">
+                                    <span class="switch-label"></span>
+                                    <span class="switch-handle"></span>
+                                </label>
+                            </div>
+                        </div>
+
                     </div>
 
                     <div class="form-group">
@@ -49,7 +68,9 @@
                     <p id="results"></p>
                 </form>
             </div>
+
             <div class="card-footer">
+                Footer.
             </div>
         </div>
     </div>

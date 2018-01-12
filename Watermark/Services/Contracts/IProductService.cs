@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Watermark.Models.Products;
 
 namespace Watermark.Services.Contracts
@@ -8,5 +9,7 @@ namespace Watermark.Services.Contracts
         IEnumerable<Product> GetAllProducts();
 
         Product GetProductById(int id);
+
+        Task<Product> AddProductAsync(Product product);
     }
 }

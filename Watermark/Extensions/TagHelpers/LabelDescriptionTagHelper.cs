@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
+using System;
 using System.Threading.Tasks;
 
 namespace Watermark.Extensions.TagHelpers
@@ -26,17 +27,12 @@ namespace Watermark.Extensions.TagHelpers
 
             if (!string.IsNullOrWhiteSpace(Description.Metadata.Description))
             {
-                output.Content.Append($"<p>{Description.Metadata.Description}</p>");
-            }
-        }
+                var id = $"hover-desc-{Guid.NewGuid()}";
 
-        public override void Process(TagHelperContext context, TagHelperOutput output)
-        {
-            base.Process(context, output);
+                output.Attributes.Add("Id", id);
+                output.AddClass("hover-desc-label");
 
-            if (!string.IsNullOrWhiteSpace(Description.Metadata.Description))
-            {
-                output.Content.Append($"<p>{Description.Metadata.Description}</p>");
+                output.Content.AppendHtml($"<div class=\"hover-desc-popup\" for=\"{id}\">{Description.Metadata.Description}</div>");
             }
         }
     }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Generic;
+using System.Linq;
 using Watermark.Models.Products;
 using Watermark.Services.Contracts;
 
@@ -20,7 +21,7 @@ namespace Watermark.Pages.Admin.Catalog
 
         public IActionResult OnGet()
         {
-            Products = ProductService.GetAllProducts();
+            Products = ProductService.GetAllProducts().ToList();
 
             return Page();
         }

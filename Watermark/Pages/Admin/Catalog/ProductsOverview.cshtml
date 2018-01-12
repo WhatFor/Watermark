@@ -1,4 +1,6 @@
 ﻿@page
+@using Watermark.Extensions;
+
 @model Watermark.Pages.Admin.Catalog.ProductsOverviewModel
 @{ 
     ViewData["Title"] = "Products";
@@ -42,22 +44,20 @@
                 <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
+                            <td>SKU</td>
                             <td>Name</td>
-                            <td>Name</td>
-                            <td>Name</td>
-                            <td>Name</td>
-                            <td>Name</td>
+                            <td>Type</td>
+                            <td>Active</td>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var product in Model.Products)
                         {
                             <tr>
+                                <td>@product.ProductSKU.SKU</td>
                                 <td>@product.ProductName.DisplayName</td>
-                                <td>@product.ProductName.DisplayName</td>
-                                <td>@product.ProductName.DisplayName</td>
-                                <td>@product.ProductName.DisplayName</td>
-                                <td>@product.ProductName.DisplayName</td>
+                                <td>@product.ProductType.ToDisplayName()</td>
+                                <td>@(product.Active ? "Yes" : "No")</td>
                             </tr>
                         }
                     </tbody>
