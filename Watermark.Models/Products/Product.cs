@@ -20,7 +20,7 @@ namespace Watermark.Models.Products
         public ProductSKU ProductSKU { get; set; } = new ProductSKU();
 
         [Required]
-        [Display(Name = "Active Product", Description = "Wether the product is active or not. Inactive products will not be displayed.")]
+        [Display(Name = "Active Product", Description = "Whether the product is active or not. Inactive products will not be displayed.")]
         public bool Active { get; set; }
 
         public ProductPricing PriceInformation { get; set; } = new ProductPricing();

@@ -57,3 +57,20 @@
     margin-top: 5px;
     margin-bottom: 0;
 }
+
+/* large card bodies + headers */
+.card-body-large {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.card-body-large-body {
+    margin-bottom: 30px;
+}
+
+/* Secondary, coloured labels - e.g. for tax rates on number input boxes */
+.additional-label-primary {
+    color: white;
+    background-color: #238CB7;
+    font-size: 0.8em;
+}
