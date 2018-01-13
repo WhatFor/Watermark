@@ -15,9 +15,10 @@ using Watermark.Repository;
 namespace Watermark.Migrations
 {
     [DbContext(typeof(WatermarkDbContext))]
-    partial class WatermarkDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180113161111_Settings")]
+    partial class Settings
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

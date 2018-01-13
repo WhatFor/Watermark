@@ -14,7 +14,6 @@
     <Folder Include="Pages\Admin\Promotions\" />
     <Folder Include="Pages\Admin\Reports\" />
     <Folder Include="Pages\Admin\Sales\" />
-    <Folder Include="Pages\Admin\System\" />
     <Folder Include="Pages\Site\" />
     <Folder Include="src\vendors\css\" />
     <Folder Include="src\vendors\js\" />

@@ -70,7 +70,7 @@
                         <div class="input-group col-md-3">
                             <label class="input-group-addon" asp-for="Product.PriceInformation.BasePrice.Cost" hover-desc=@Model.Product.PriceInformation.BasePrice.Cost></label>
                             <input type="text" asp-for="Product.PriceInformation.BasePrice.Cost" class="form-control" />
-                            <label class="input-group-addon additional-label-primary">GBP</label> <!-- TODO: Implement global settings and pull this from the site locale setting. -->
+                            <label class="input-group-addon additional-label-primary">@Model.GlobalCurrency</label>
                         </div>
 
                     </div>

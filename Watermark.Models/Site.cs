@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Watermark.Models.Admin.Configuration;
 
 namespace Watermark.Models
 {
@@ -8,5 +9,7 @@ namespace Watermark.Models
         public int Id { get; set; }
 
         public string Name { get; set; }
+
+        public Configuration SiteConfiguration { get; set; }
     }
 }

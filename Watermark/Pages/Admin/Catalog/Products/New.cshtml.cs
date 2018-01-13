@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Watermark.Models;
 using Watermark.Models.Products;
+using Watermark.Services.Contracts;
 
 namespace Watermark.Pages.Admin.Catalog.Products
 {
@@ -8,6 +10,18 @@ namespace Watermark.Pages.Admin.Catalog.Products
     {
         [BindProperty]
         public Product Product { get; set; }
+
+        [BindProperty]
+        public Currency GlobalCurrency { get; set; }
+
+        private readonly IConfigurationService configurationService;
+
+        public NewModel(IConfigurationService configurationService)
+        {
+            this.configurationService = configurationService;
+
+            GlobalCurrency = configurationService.GetGlobalCurrency();
+        }
 
         public void OnGet()
         {

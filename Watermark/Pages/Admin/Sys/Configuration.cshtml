@@ -1,0 +1,64 @@
+﻿@page
+
+@model Watermark.Pages.Admin.Sys.ConfigurationModel
+@using Watermark.Models;
+
+@{
+    ViewData["Title"] = "Configuration";
+}
+
+@section Styles
+{
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <strong>System Configuration</strong>
+            </div>
+            <div class="card-body card-body-large">
+                <form asp-action="OnPostAsync"
+                      data-ajax-begin="onBegin" data-ajax-complete="onComplete"
+                      data-ajax-failure="onFailed" data-ajax-success="onSuccess"
+                      data-ajax="true" data-ajax-method="POST">
+
+                    @Html.HiddenFor(m => m.Config.Id)
+
+                    <div class="card-body-large-subheading">
+                        <h6>Currency Configuration</h6>
+                        <hr />
+                    </div>
+
+                    <div class="form-group row card-body-large-body">
+
+                        <div class="input-group col-md-3">
+                            <label class="input-group-addon" asp-for="Config.CurrencyConfiguration.GlobalCurrency" hover-desc="@Model.Config.CurrencyConfiguration.GlobalCurrency"></label>
+                            <select asp-for="Config.CurrencyConfiguration.GlobalCurrency" asp-items="Html.GetEnumSelectList<Currency>()" class="form-control">
+                                <option selected disabled hidden></option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="submit" value="Save" class="btn btn-primary" />
+                        </div>
+                    </div>
+
+                    <p id="results"></p>
+                </form>
+            </div>
+
+            <div class="card-footer">
+                Footer.
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+    {
+    <script src="@Url.Content("~/js/pages/configuration.js")"></script>
+}
