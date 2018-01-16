@@ -17,3 +17,18 @@ var onFailed = function (context) {
     results.html("<p>Failed...</p>")
     alert("Failed");
 }; 
+
+// Setup logic
+$(document).ready(function () {
+    $("#datepicker-from").datepicker();
+    $("#datepicker-to").datepicker();
+});
+
+// Logic to collapse / expand the Special Price panel
+$(document).ready(function () {
+    $('#special-price-display-body').hide();
+
+    $('#special-price-display').change(function () {
+        $('#special-price-display-body').slideToggle("fast");
+    });
+});

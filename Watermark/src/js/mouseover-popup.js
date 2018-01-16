@@ -8,13 +8,13 @@ $(document).ready(function () {
 
             let id = $(this).attr("Id");
 
-            $(".hover-desc-popup[for=" + id + "]").show();
+            $(".hover-desc-popup[data-for=" + id + "]").show();
 
         }, function () {
 
             let id = $(this).attr("Id");
 
-            $(".hover-desc-popup[for=" + id + "]").hide();
+            $(".hover-desc-popup[data-for=" + id + "]").hide();
         }
     );
 });

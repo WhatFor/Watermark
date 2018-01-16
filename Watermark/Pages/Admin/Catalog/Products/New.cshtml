@@ -10,6 +10,7 @@
 
 @section Styles
 {
+    <link rel="stylesheet" type="text/css" href="~/vendors/css/jquery-ui.min.css">
 }
 
 <div class="row">
@@ -24,12 +25,12 @@
                       data-ajax-failure="onFailed" data-ajax-success="onSuccess"
                       data-ajax="true" data-ajax-method="POST">
 
-                    <div class="card-body-large-subheading">
+                    <div class="card-body-large-subheading col-md-12">
                         <h6>Product Details</h6>
                         <hr />
                     </div>
 
-                    <div class="form-group row card-body-large-body">
+                    <div class="form-group row card-body-large-body col-md-12">
 
                         <div class="input-group col-md-4">
                             <label class="input-group-addon" asp-for="Product.ProductName.DisplayName" hover-desc="@Model.Product.ProductName.DisplayName"></label>
@@ -60,22 +61,56 @@
                         </div>
                     </div>
 
-                    <div class="card-body-large-subheading">
+                    <div class="card-body-large-subheading col-md-6">
                         <h6>Product Pricing</h6>
                         <hr />
                     </div>
                     
-                    <div class="form-group row card-body-large-body">
+                    <div class="row col-md-6">
 
-                        <div class="input-group col-md-3">
+                        <div class="input-group col-md-6" style="margin-bottom: 20px;">
                             <label class="input-group-addon" asp-for="Product.PriceInformation.BasePrice.Cost" hover-desc=@Model.Product.PriceInformation.BasePrice.Cost></label>
                             <input type="text" asp-for="Product.PriceInformation.BasePrice.Cost" class="form-control" />
                             <label class="input-group-addon additional-label-primary">@Model.GlobalCurrency</label>
                         </div>
 
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    Special Pricing Configuration
+                                    <label class="switch switch-default switch-primary switch-pill float-right mb-0">
+                                        <input id="special-price-display" type="checkbox" class="switch-input">
+                                        <span class="switch-label" data-on="On" data-off="Off"></span>
+                                        <span class="switch-handle"></span>
+                                    </label>
+                                </div>
+                                <div id="special-price-display-body" class="card-body">
+                                    <div class="row form-group">
+                                        <div class="input-group col-md-6">
+                                            <label class="input-group-addon" asp-for="Product.PriceInformation.SpecialPrice.Cost" hover-desc=@Model.Product.PriceInformation.SpecialPrice.Cost></label>
+                                            <input type="text" asp-for="Product.PriceInformation.SpecialPrice.Cost" class="form-control" />
+                                            <label class="input-group-addon additional-label-primary">@Model.GlobalCurrency</label>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="input-group col-md-5">
+                                            <label class="input-group-addon" asp-for="Product.PriceInformation.SpecialPrice.SpecialPriceBeginningDate" hover-desc=@Model.Product.PriceInformation.SpecialPrice.SpecialPriceBeginningDate></label>
+                                            <input id="datepicker-from" type="text" />
+                                            <label class="input-group-addon"><i class="fa fa-times"></i></label>
+                                        </div>
+                                        <div class="input-group col-md-5">
+                                            <label class="input-group-addon" asp-for="Product.PriceInformation.SpecialPrice.SpecialPriceEndDate" hover-desc=@Model.Product.PriceInformation.SpecialPrice.SpecialPriceEndDate></label>
+                                            <input id="datepicker-to" type="text" />
+                                            <label class="input-group-addon"><i class="fa fa-times"></i></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group col-md-12">
                         <div class="input-group">
                             <input type="submit" value="Save" class="btn btn-primary" />
                         </div>
@@ -95,4 +130,5 @@
 @section Scripts
 {
     <script src="@Url.Content("~/js/pages/products_new.js")"></script>
+    <script src="@Url.Content("~/vendors/js/jquery-ui.min.js")"></script>
 }

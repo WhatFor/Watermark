@@ -1,17 +1,26 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Watermark.Models.Products
 {
     public class SpecialPriceDetail : PriceDetail
     {
         /// <summary>
+        /// The reduced, special price.
+        /// </summary>
+        [Display(Name = "Special Price", Description = "A product's special, reduced price, as shown when a product is discounted.")]
+        public override decimal Cost { get; set; }
+
+        /// <summary>
         /// Whether the special price should become active on a given date. If null, will be active instantly.
         /// </summary>
+        [Display(Name = "Start", Description = "The date at which the promotional price will begin. Leaving this option blank will cause the promotion to begin immediately.")]
         public DateTimeOffset? SpecialPriceBeginningDate { get; set; }
 
         /// <summary>
         /// An optional end date for the special price end. Leave null to run the special price indefinetely.
         /// </summary>
+        [Display(Name = "End", Description = "The date at which the promotional price will end. Leaving this option blank will cause the promotion to run indefinitely.")]
         public DateTimeOffset? SpecialPriceEndDate { get; set; }
 
         /// <summary>

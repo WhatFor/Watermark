@@ -32,7 +32,7 @@ namespace Watermark.Extensions.TagHelpers
                 output.Attributes.Add("Id", id);
                 output.AddClass("hover-desc-label");
 
-                output.Content.AppendHtml($"<div class=\"hover-desc-popup\" for=\"{id}\">{Description.Metadata.Description}</div>");
+                output.Content.AppendHtml($"<div class=\"hover-desc-popup\" data-for=\"{id}\">{Description.Metadata.Description}</div>");
             }
         }
     }
