@@ -93,15 +93,15 @@
                                         </div>
                                     </div>
                                     <div class="row form-group">
-                                        <div class="input-group col-md-5">
+                                        <div class="input-group col-md-6">
                                             <label class="input-group-addon" asp-for="Product.PriceInformation.SpecialPrice.SpecialPriceBeginningDate" hover-desc=@Model.Product.PriceInformation.SpecialPrice.SpecialPriceBeginningDate></label>
-                                            <input id="datepicker-from" type="text" />
-                                            <label class="input-group-addon"><i class="fa fa-times"></i></label>
+                                            <input class="form-control" id="datepicker-from" type="text" />
+                                            <label class="input-group-addon" data-for="datepicker-from"><i class="fa fa-times"></i></label>
                                         </div>
-                                        <div class="input-group col-md-5">
+                                        <div class="input-group col-md-6">
                                             <label class="input-group-addon" asp-for="Product.PriceInformation.SpecialPrice.SpecialPriceEndDate" hover-desc=@Model.Product.PriceInformation.SpecialPrice.SpecialPriceEndDate></label>
-                                            <input id="datepicker-to" type="text" />
-                                            <label class="input-group-addon"><i class="fa fa-times"></i></label>
+                                            <input class="form-control" id="datepicker-to" type="text" />
+                                            <label class="input-group-addon" data-for="datepicker-to"><i class="fa fa-times"></i></label>
                                         </div>
                                     </div>
                                 </div>
