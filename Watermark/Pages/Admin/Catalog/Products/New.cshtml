@@ -74,6 +74,23 @@
                             <label class="input-group-addon additional-label-primary">@Model.GlobalCurrency</label>
                         </div>
 
+                        <div class="input-group col-md-6" style="margin-bottom: 20px;">
+                            <label class="input-group-addon" asp-for="Product.PriceInformation.ManufacturerRRP" hover-desc=@Model.Product.PriceInformation.ManufacturerRRP></label>
+                            <input type="text" asp-for="Product.PriceInformation.ManufacturerRRP" class="form-control" />
+                            <label class="input-group-addon additional-label-primary">@Model.GlobalCurrency</label>
+                        </div>
+
+                        <div class="input-group col-md-6 offset-6"  style="margin-bottom: 20px;">
+                            <label class="input-group-addon" asp-for="Product.PriceInformation.DisplayManufacturerRRP" hover-desc="@Model.Product.PriceInformation.DisplayManufacturerRRP"></label>
+                            <div class="switch-container">
+                                <label class="switch switch-default switch-pill switch-primary switch-margin-top">
+                                    <input asp-for="Product.PriceInformation.DisplayManufacturerRRP" type="checkbox" class="switch-input" checked="">
+                                    <span class="switch-label"></span>
+                                    <span class="switch-handle"></span>
+                                </label>
+                            </div>
+                        </div>
+
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
@@ -99,15 +116,42 @@
                                             <label class="input-group-addon" data-for="datepicker-from"><i class="fa fa-times"></i></label>
                                         </div>
                                         <div class="input-group col-md-6">
+                                            <label class="input-group-addon" asp-for="Product.PriceInformation.SpecialPrice.DisplayEndDateAlert" hover-desc="@Model.Product.PriceInformation.SpecialPrice.DisplayEndDateAlert" style="width: 120px;"></label>
+                                            <div class="switch-container">
+                                                <label class="switch switch-default switch-pill switch-primary switch-margin-top">
+                                                    <input asp-for="Product.PriceInformation.SpecialPrice.DisplayEndDateAlert" type="checkbox" class="switch-input" checked="">
+                                                    <span class="switch-label"></span>
+                                                    <span class="switch-handle"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="input-group col-md-6">
                                             <label class="input-group-addon" asp-for="Product.PriceInformation.SpecialPrice.SpecialPriceEndDate" hover-desc=@Model.Product.PriceInformation.SpecialPrice.SpecialPriceEndDate></label>
                                             <input class="form-control" id="datepicker-to" type="text" />
                                             <label class="input-group-addon" data-for="datepicker-to"><i class="fa fa-times"></i></label>
+                                        </div>
+                                        
+                                        <div class="input-group col-md-6">
+                                            <label class="input-group-addon" asp-for="Product.PriceInformation.SpecialPrice.DisplayBasePrice" hover-desc="@Model.Product.PriceInformation.SpecialPrice.DisplayBasePrice" style="width: 120px;"></label>
+                                            <div class="switch-container">
+                                                <label class="switch switch-default switch-pill switch-primary switch-margin-top">
+                                                    <input asp-for="Product.PriceInformation.SpecialPrice.DisplayBasePrice" type="checkbox" class="switch-input" checked="">
+                                                    <span class="switch-label"></span>
+                                                    <span class="switch-handle"></span>
+                                                </label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
+                    <div class="card-body-large-subheading col-md-6">
+                        <h6>Product Media</h6>
+                        <hr />
                     </div>
 
                     <div class="form-group col-md-12">

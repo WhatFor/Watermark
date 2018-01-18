@@ -11,8 +11,10 @@ namespace Watermark.Models.Products
 
         public SpecialPriceDetail SpecialPrice { get; set; }
 
+        [Display(Name = "RRP", Description = "The manufacturer's recommended retail price.")]
         public decimal ManufacturerRRP { get; set; }
 
+        [Display(Name = "Display RRP", Description = "Wether the RRP should be displayed on the product page.")]
         public bool DisplayManufacturerRRP { get; set; }
 
         public decimal GetPrice()

@@ -45,6 +45,7 @@
 
 .hover-desc-label {
     position: relative;
+    min-width: 55px;
 }
 
 /* Styling for a form container to wrap a pill button */
