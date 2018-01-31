@@ -75,3 +75,30 @@
     background-color: #238CB7;
     font-size: 0.8em;
 }
+
+/* Styling image upload form */
+
+.image-thumbnail-container {
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+}
+
+.image-upload-container {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #BCCAD1;
+    color: #BCCAD1;
+    font-size: 32px;
+}
+
+.image-upload-container > i {
+    float: right;
+    margin-top: 35px;
+    margin-right: 35px;
+}
+
+.image-upload-container.is-dragover {
+  background-color: #2683AD;
+  color: #FFFFFF;
+}

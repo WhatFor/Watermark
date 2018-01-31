@@ -8,6 +8,7 @@ namespace Watermark.Models.Products
         /// <summary>
         /// The reduced, special price.
         /// </summary>
+        [Required]
         [Display(Name = "Special Price", Description = "A product's reduced price, as shown when a product is discounted.")]
         public override decimal Cost { get; set; }
 
@@ -26,15 +27,15 @@ namespace Watermark.Models.Products
         /// <summary>
         /// Whether to display a countdown to the end of the special price on the product page.
         /// </summary>
+        [Required]
         [Display(Name = "Show End Alert", Description = "Wether or not to display an alert (including a timer) for when the promotional price will end.")]
-
         public bool DisplayEndDateAlert { get; set; }
 
         /// <summary>
         /// Whether to display the base price as the original, before-discount price on the product page.
         /// </summary>
+        [Required]
         [Display(Name = "Show Base Price", Description = "Wether the product listing should display the base price as well as the promotional price.")]
-
         public bool DisplayBasePrice { get; set; }
 
         /// <summary>

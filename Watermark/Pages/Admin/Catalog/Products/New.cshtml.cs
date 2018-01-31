@@ -25,7 +25,10 @@ namespace Watermark.Pages.Admin.Catalog.Products
 
         public void OnGet()
         {
-
+            if (Product == null)
+            {
+                Product = new Product();
+            }
         }
     }
 }

@@ -21,6 +21,7 @@ namespace Watermark.Repository
             return DbContext.Products
                 .Include(m => m.ProductName)
                 .Include(m => m.ProductSKU)
+                .Include(m => m.ProductMedia)
                 .AsEnumerable();
         }
 

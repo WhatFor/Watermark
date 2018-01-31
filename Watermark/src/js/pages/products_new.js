@@ -50,3 +50,35 @@ var clearLabelInit = function () {
         $('#datepicker-to').val('');
     });
 };
+
+// Drag and drop file uploader
+$(document).ready(function () {
+    initDragAndDrop();
+});
+
+var initDragAndDrop = function () {
+
+    var droppedFiles = false;
+    var form = $('#drag-drop-files');
+    
+    form
+        .on('drag dragstart dragend dragover dragenter dragleave drop', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        })
+        .on('dragover dragenter', function () {
+            form.addClass('is-dragover');
+        })
+        .on('dragleave dragend drop', function () {
+            form.removeClass('is-dragover');
+        })
+        .on('drop', function (e) {
+            droppedFiles = e.originalEvent.dataTransfer.files;
+            insertNewImage();
+        });
+
+    var insertNewImage = function () {
+
+        $('#drag-drop-files').before("<p>" + droppedFiles.length + " image(s) inserted.</p>");
+    }
+};

@@ -13,60 +13,72 @@
     <link rel="stylesheet" type="text/css" href="~/vendors/css/jquery-ui.min.css">
 }
 
-<div class="row">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-header">
-                <strong>Add A New Product</strong>
+
+<div class="card">
+
+    <div class="card-header">
+        <strong>Add A New Product</strong>
+    </div>
+
+    <div class="card-body">
+        <form asp-controller="Products" asp-action="AddProductAsync"
+                data-ajax-begin="onBegin" data-ajax-complete="onComplete"
+                data-ajax-failure="onFailed" data-ajax-success="onSuccess"
+                data-ajax="true" data-ajax-method="POST">
+
+            <!-- Product Details Header-->
+            <div class="row">
+                <h6>Product Details</h6>
+                <hr />
             </div>
-            <div class="card-body card-body-large">
-                <form asp-controller="Products" asp-action="AddProductAsync"
-                      data-ajax-begin="onBegin" data-ajax-complete="onComplete"
-                      data-ajax-failure="onFailed" data-ajax-success="onSuccess"
-                      data-ajax="true" data-ajax-method="POST">
 
-                    <div class="card-body-large-subheading col-md-12">
-                        <h6>Product Details</h6>
-                        <hr />
+            <!-- Product Details Body -->
+            <div class="row">
+
+                <div class="input-group col-md-4">
+                    <label class="input-group-addon" asp-for="Product.ProductName.DisplayName" hover-desc="@Model.Product.ProductName.DisplayName"></label>
+                    <input type="text" asp-for="Product.ProductName.DisplayName" class="form-control" />
+                </div>
+
+                <div class="input-group col-md-3">
+                    <label class="input-group-addon" asp-for="Product.ProductSKU.SKU" hover-desc=@Model.Product.ProductSKU.SKU></label>
+                    <input type="text" asp-for="Product.ProductSKU.SKU" class="form-control" />
+                </div>
+
+                <div class="input-group col-md-3">
+                    <label class="input-group-addon" asp-for="Product.ProductType" hover-desc="@Model.Product.ProductType"></label>
+                    <select asp-for="Product.ProductType" asp-items="Html.GetEnumSelectList<ProductType>()" class="form-control">
+                        <option selected disabled hidden></option>
+                    </select>
+                </div>
+
+                <div class="input-group col-md-2">
+                    <label class="input-group-addon" asp-for="Product.Active" hover-desc="@Model.Product.Active"></label>
+                    <div class="switch-container">
+                        <label class="switch switch-default switch-pill switch-primary switch-margin-top">
+                            <input asp-for="Product.Active" type="checkbox" class="switch-input" checked="">
+                            <span class="switch-label"></span>
+                            <span class="switch-handle"></span>
+                        </label>
                     </div>
+                </div>
+            </div>
 
-                    <div class="form-group row card-body-large-body col-md-12">
+            <!-- Pricing & Media Row -->
+            <div class="row">
 
-                        <div class="input-group col-md-4">
-                            <label class="input-group-addon" asp-for="Product.ProductName.DisplayName" hover-desc="@Model.Product.ProductName.DisplayName"></label>
-                            <input type="text" asp-for="Product.ProductName.DisplayName" class="form-control" />
-                        </div>
+                <!-- Pricing Col -->
+                <div class="col-md-6">
 
-                        <div class="input-group col-md-3">
-                            <label class="input-group-addon" asp-for="Product.ProductSKU.SKU" hover-desc=@Model.Product.ProductSKU.SKU></label>
-                            <input type="text" asp-for="Product.ProductSKU.SKU" class="form-control" />
-                        </div>
-
-                        <div class="input-group col-md-3">
-                            <label class="input-group-addon" asp-for="Product.ProductType" hover-desc="@Model.Product.ProductType"></label>
-                            <select asp-for="Product.ProductType" asp-items="Html.GetEnumSelectList<ProductType>()" class="form-control">
-                                <option selected disabled hidden></option>
-                            </select>
-                        </div>
-
-                        <div class="input-group col-md-2">
-                            <label class="input-group-addon" asp-for="Product.Active" hover-desc="@Model.Product.Active"></label>
-                            <div class="switch-container">
-                                <label class="switch switch-default switch-pill switch-primary switch-margin-top">
-                                    <input asp-for="Product.Active" type="checkbox" class="switch-input" checked="">
-                                    <span class="switch-label"></span>
-                                    <span class="switch-handle"></span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card-body-large-subheading col-md-6">
+                    <!-- Pricing Details Header -->
+                    <div class="row">
                         <h6>Product Pricing</h6>
                         <hr />
                     </div>
-                    
-                    <div class="row col-md-6">
+
+
+                    <!-- Pricing Details Body -->
+                    <div class="row">
 
                         <div class="input-group col-md-6" style="margin-bottom: 20px;">
                             <label class="input-group-addon" asp-for="Product.PriceInformation.BasePrice.Cost" hover-desc=@Model.Product.PriceInformation.BasePrice.Cost></label>
@@ -80,7 +92,7 @@
                             <label class="input-group-addon additional-label-primary">@Model.GlobalCurrency</label>
                         </div>
 
-                        <div class="input-group col-md-6 offset-6"  style="margin-bottom: 20px;">
+                        <div class="input-group col-md-6 offset-6" style="margin-bottom: 20px;">
                             <label class="input-group-addon" asp-for="Product.PriceInformation.DisplayManufacturerRRP" hover-desc="@Model.Product.PriceInformation.DisplayManufacturerRRP"></label>
                             <div class="switch-container">
                                 <label class="switch switch-default switch-pill switch-primary switch-margin-top">
@@ -132,7 +144,7 @@
                                             <input class="form-control" id="datepicker-to" type="text" />
                                             <label class="input-group-addon" data-for="datepicker-to"><i class="fa fa-times"></i></label>
                                         </div>
-                                        
+
                                         <div class="input-group col-md-6">
                                             <label class="input-group-addon" asp-for="Product.PriceInformation.SpecialPrice.DisplayBasePrice" hover-desc="@Model.Product.PriceInformation.SpecialPrice.DisplayBasePrice" style="width: 120px;"></label>
                                             <div class="switch-container">
@@ -148,28 +160,55 @@
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="card-body-large-subheading col-md-6">
+                <!-- Product Media Col -->
+                <div class="col-md-6">
+
+                    <!-- Product Media Header -->
+                    <div class="row">
                         <h6>Product Media</h6>
                         <hr />
                     </div>
 
-                    <div class="form-group col-md-12">
-                        <div class="input-group">
-                            <input type="submit" value="Save" class="btn btn-primary" />
+
+                    <!-- Product Media Body -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div id="drag-drop-files" class="image-upload-container">
+                                <i class="fa fa-plus"></i>
+                            </div>
+                            <input hidden type="file" id="files" name="files" multiple />
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                @*<label class="input-group-addon" asp-for="Product.ProductMedia[0].MediaType" hover-desc="@Model.Product.ProductMedia[0].MediaType"></label>
+                                <select asp-for="Product.ProductMedia[1].MediaType" asp-items="Html.GetEnumSelectList<ProductMediaType>()" class="form-control">
+                                    <option selected disabled hidden></option>
+                                </select>*@
+                            </div>
                         </div>
                     </div>
 
-                    <p id="results"></p>
-                </form>
+                </div>
             </div>
 
-            <div class="card-footer">
-                Footer.
+            <!-- Form Submit -->
+            <div class="row">
+                <div class="input-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
             </div>
-        </div>
+        
+        <p id="results"></p>
+        </form>
+    </div>
+
+    <div class="card-footer">
+        Footer.
     </div>
 </div>
+
 
 @section Scripts
 {

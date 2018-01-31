@@ -111,7 +111,7 @@ namespace Watermark.Models.Products
 
         public ProductMedia GetPrimaryMedia()
         {
-            return ProductMedia.SingleOrDefault(m => m.PrimaryMedia);
+            return ProductMedia.SingleOrDefault(m => m.PrimaryMedia == true);
         }
 
         public bool IsActive()
