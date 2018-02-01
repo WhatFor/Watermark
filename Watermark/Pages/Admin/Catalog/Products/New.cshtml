@@ -174,18 +174,21 @@
 
                     <!-- Product Media Body -->
                     <div class="row">
-                        <div class="col-md-6">
+                        <div id="draggable-images-container" class="col-md-6">
                             <div id="drag-drop-files" class="image-upload-container">
                                 <i class="fa fa-plus"></i>
                             </div>
                             <input hidden type="file" id="files" name="files" multiple />
                         </div>
                         <div class="col-md-6">
-                            <div class="input-group">
-                                @*<label class="input-group-addon" asp-for="Product.ProductMedia[0].MediaType" hover-desc="@Model.Product.ProductMedia[0].MediaType"></label>
-                                <select asp-for="Product.ProductMedia[1].MediaType" asp-items="Html.GetEnumSelectList<ProductMediaType>()" class="form-control">
-                                    <option selected disabled hidden></option>
-                                </select>*@
+                            <div id="product-media-list" class="input-group">
+
+                                @if (Model.Product.ProductMedia == null || Model.Product.ProductMedia.Count == 0)
+                                {
+                                    <p id="no-media-alert">No media. Upload some here!</p>
+                                }
+
+                                <!-- Product Media Rows -->
                             </div>
                         </div>
                     </div>
@@ -214,4 +217,5 @@
 {
     <script src="@Url.Content("~/js/pages/products_new.js")"></script>
     <script src="@Url.Content("~/vendors/js/jquery-ui.min.js")"></script>
+    <script src="@Url.Content("~/vendors/js/sortable.min.js")"></script>
 }

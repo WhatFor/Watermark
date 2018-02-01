@@ -79,6 +79,79 @@ var initDragAndDrop = function () {
 
     var insertNewImage = function () {
 
-        $('#drag-drop-files').before("<p>" + droppedFiles.length + " image(s) inserted.</p>");
+        if (droppedFiles) {
+
+            var indexes = [];
+            $('.image-upload-preview').each(function () {
+                var $this = $(this);
+                indexes.push($this.data("image-index"));
+            });
+
+            var beginningIndex = 0;
+
+            if (indexes.length > 0)
+            {
+                beginningIndex = Math.max(...indexes) + 1;
+            }
+
+            $.each(droppedFiles, function (i, file) {
+
+                i = i + beginningIndex;
+
+                $('#product-media-list').append(`
+                    <div style="display:none;" data-image-form-index=`+ i +` class="media-row">
+
+                        <input hidden class="input-group" type="number" name="Product.ProductMedia[`+ i +`].Order"/>
+                        <input hidden class="input-group" type="checkbox" name="Product.ProductMedia[`+ i +`].PrimaryMedia"/>
+                        <input hidden class="input-group" type="number" name="Product.ProductMedia[`+ i +`].MediaType"/>
+                        <input hidden class="input-group" type="file" name="Product.ProductMedia[`+ i +`].MediaContent"/>
+
+                        <label class="input-group-addon">Hide</label>
+                        <input class="input-group" type="checkbox" name="Product.ProductMedia[`+ i +`].Hide"/>
+
+                        <label class="input-group-addon">Description</label>
+                        <input class="input-group" type="text" name="Product.ProductMedia[`+ i +`].MediaDescription"/>
+
+                    </div>`
+                );
+
+                $('p#no-media-alert').remove();
+
+                var reader = new FileReader();
+
+                reader.addEventListener("load", function () {
+
+                    // Create image object
+                    $('#drag-drop-files').before(`
+                        <div data-image-index=`+ i +` class="image-upload-preview">
+                            <img src=`+ reader.result +`></img>
+                        </div>`
+                    );
+
+                    // Register on-click listener
+                    $('.image-upload-preview').on('click', function () {
+
+                        $('.image-upload-preview').removeClass('active');
+                        $(this).addClass('active');
+
+                        var imageIndex = $(this).data("image-index");
+
+                        $(".media-row").css("display", "none");
+                        $(".media-row[data-image-form-index=" + imageIndex + "]").css("display", "block");
+
+                    });
+
+                    // Register 'sortable'
+                    var container = document.getElementById("draggable-images-container");
+                    Sortable.create(container, {
+                        animation: 150,
+                        draggable: ".image-upload-preview"
+                    });
+
+                }, false);
+
+                reader.readAsDataURL(file);
+            });
+        }
     }
 };

@@ -18,9 +18,14 @@ namespace Watermark.Models.Products
 
         private string GetSafeName()
         {
-            var alphaNumericExp = new Regex("[^a-zA-Z0-9 -]");
+            if (!string.IsNullOrEmpty(DisplayName))
+            {
+                var regex = new Regex(@"[^a-zA-Z0-9 -]");
 
-            return alphaNumericExp.Replace(DisplayName, string.Empty);
+                return regex.Replace(DisplayName, string.Empty);
+            }
+
+            return string.Empty;
         }
     }
 }
