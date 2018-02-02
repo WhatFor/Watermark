@@ -58,6 +58,16 @@ $(document).ready(function () {
 
 var initDragAndDrop = function () {
 
+    // Prevent default window drag + drop
+    window.addEventListener("dragover", function (e) {
+        e = e || event;
+        e.preventDefault();
+    }, false);
+    window.addEventListener("drop", function (e) {
+        e = e || event;
+        e.preventDefault();
+    }, false);
+
     var droppedFiles = false;
     var form = $('#drag-drop-files');
     
@@ -81,23 +91,24 @@ var initDragAndDrop = function () {
 
         if (droppedFiles) {
 
+            // Get image index
             var indexes = [];
             $('.image-upload-preview').each(function () {
                 var $this = $(this);
                 indexes.push($this.data("image-index"));
             });
-
             var beginningIndex = 0;
-
             if (indexes.length > 0)
             {
                 beginningIndex = Math.max(...indexes) + 1;
             }
 
+
             $.each(droppedFiles, function (i, file) {
 
                 i = i + beginningIndex;
 
+                // Create form for image
                 $('#product-media-list').append(`
                     <div style="display:none;" data-image-form-index=`+ i +` class="media-row">
 
@@ -106,27 +117,45 @@ var initDragAndDrop = function () {
                         <input hidden class="input-group" type="number" name="Product.ProductMedia[`+ i +`].MediaType"/>
                         <input hidden class="input-group" type="file" name="Product.ProductMedia[`+ i +`].MediaContent"/>
 
-                        <label class="input-group-addon">Hide</label>
-                        <input class="input-group" type="checkbox" name="Product.ProductMedia[`+ i +`].Hide"/>
+                        <div class="input-group col-md-6">
+                            <label class="input-group-addon" asp-for="Product.ProductMedia[`+ i + `].Hide">Hide?</label>
+                            <div class="switch-container">
+                                <label class="switch switch-default switch-pill switch-primary switch-margin-top">
+                                    <input asp-for="Product.ProductMedia[`+ i +`].Hide" type="checkbox" class="switch-input hide-toggle-button" checked="">
+                                    <span class="switch-label"></span>
+                                    <span class="switch-handle"></span>
+                                </label>
+                            </div>
+                        </div>
 
-                        <label class="input-group-addon">Description</label>
-                        <input class="input-group" type="text" name="Product.ProductMedia[`+ i +`].MediaDescription"/>
+                        <div class="input-group col-md-12">
+                            <label class="input-group-addon">Description</label>
+                            <input class="form-control" type="text" name="Product.ProductMedia[`+ i +`].MediaDescription"/>
+                        </div>
+
 
                     </div>`
                 );
 
+
                 $('p#no-media-alert').remove();
 
-                var reader = new FileReader();
 
+                var reader = new FileReader();
                 reader.addEventListener("load", function () {
 
                     // Create image object
                     $('#drag-drop-files').before(`
                         <div data-image-index=`+ i +` class="image-upload-preview">
-                            <img src=`+ reader.result +`></img>
+                            <img class="preview-image" src=`+ reader.result +`></img>
                         </div>`
                     );
+
+                    // Assign Order to images
+                    assignImageIndex();
+
+                    // Assign content to input
+                    //$('input[name="Product.ProductMedia[' + i + '].MediaContent"').val(reader.result);   // TODO FIX
 
                     // Register on-click listener
                     $('.image-upload-preview').on('click', function () {
@@ -141,11 +170,29 @@ var initDragAndDrop = function () {
 
                     });
 
+                    // Register toggle hide listener
+                    $('.hide-toggle-button').on('click', function () {
+
+                        var index = $(this).parent('div').data("image-form-index");
+
+                        if ($(this).is(":checked"))
+                        {
+                            $(".image-upload-preview[data-image-index=" + index + "]").children(".preview-image").addClass("hidden");
+                        }
+                        else
+                        {
+                            $(".image-upload-preview[data-image-index=" + index + "]").children(".preview-image").removeClass('hidden');
+                        }
+                    });
+
                     // Register 'sortable'
                     var container = document.getElementById("draggable-images-container");
                     Sortable.create(container, {
                         animation: 150,
-                        draggable: ".image-upload-preview"
+                        draggable: ".image-upload-preview",
+                        onEnd: function (evt) {
+                            assignImageIndex();
+                        }
                     });
 
                 }, false);
@@ -154,4 +201,25 @@ var initDragAndDrop = function () {
             });
         }
     }
+
+    var assignImageIndex = function () {
+
+        $('.image-index-badge').remove();
+
+        var images = $('.image-upload-preview');
+        $.each(images, function (i, image) {
+
+            i = i + 1;
+
+            if (i == 1)
+            {
+                image.insertAdjacentHTML("beforeend", "<span class=\"badge badge-success image-index-badge\">" + i + "</span>");
+            }
+            else
+            {
+                image.insertAdjacentHTML("beforeend", "<span class=\"badge badge-secondary image-index-badge\">" + i + "</span>");
+            }
+        });
+
+    };
 };

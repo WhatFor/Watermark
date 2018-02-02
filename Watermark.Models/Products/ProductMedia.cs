@@ -48,11 +48,11 @@ namespace Watermark.Models.Products
 
             uri += MediaType == ProductMediaType.Image ? "Images/" : "Video/";
 
-            uri += ProductId + Id;
+            uri += ProductId + Id + ".";
 
             uri += FileType.ToString();
 
-            return new Uri(uri);
+            return new Uri(uri, UriKind.Relative);
         } 
     }
 }
