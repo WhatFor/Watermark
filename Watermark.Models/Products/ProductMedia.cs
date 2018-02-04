@@ -16,11 +16,11 @@ namespace Watermark.Models.Products
         public string MediaDescription { get; set; }
 
         [Required]
-        public ProductMediaType MediaType { get; set; }
+        public ProductMediaType MediaType => DetermindMediaType();
 
         [Required]
         [Display(Name = "Primary Media", Description = "Wether this is the first image for the product.")]
-        public bool PrimaryMedia { get; set; }
+        public bool PrimaryMedia => CalculatePrimary();
 
         [Required]
         [Range(0, int.MaxValue)]
@@ -33,8 +33,11 @@ namespace Watermark.Models.Products
         [Required]
         public ProductMediaFileType FileType { get; set; }
 
+        /// <summary>
+        /// Base 64 Encoded file data.
+        /// </summary>
         [NotMapped]
-        public byte[] MediaContent { get; set; }
+        public string MediaContent { get; set; }
 
         [NotMapped]
         public Uri Path => GetFilePath();
@@ -54,5 +57,41 @@ namespace Watermark.Models.Products
 
             return new Uri(uri, UriKind.Relative);
         } 
+
+        private ProductMediaType DetermindMediaType()
+        {
+            switch (FileType)
+            {
+                // Unable to determine
+                case ProductMediaFileType.Unknown:
+                    return ProductMediaType.Unknown;
+
+                // Images
+                case ProductMediaFileType.JPEG:
+                    return ProductMediaType.Image;
+
+                case ProductMediaFileType.JPG:
+                    return ProductMediaType.Image;
+
+                case ProductMediaFileType.PNG:
+                    return ProductMediaType.Image;
+
+                // Video
+                case ProductMediaFileType.MP4:
+                    return ProductMediaType.Video;
+
+                default:
+                    return ProductMediaType.Unknown;
+            }
+        }
+
+        /// <summary>
+        /// If the media element is first in the Order, we treat it as the 'Primary Media'.
+        /// </summary>
+        /// <returns>Wether the media is first - i.e. the primary media.</returns>
+        private bool CalculatePrimary()
+        {
+            return Order == 0;
+        }
     }
 }

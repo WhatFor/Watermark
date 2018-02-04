@@ -2,11 +2,15 @@
 {
     public enum ProductMediaFileType
     {
+        // Unknown
+        Unknown = 0,
+
         // Image
-        JPEG = 0,
-        PNG = 1,
+        JPEG = 1,
+        JPG = 2,
+        PNG = 3,
 
         // Video
-        MP4 = 2,
+        MP4 = 4,
     }
 }

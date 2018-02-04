@@ -114,14 +114,14 @@ var initDragAndDrop = function () {
 
                         <input hidden class="input-group" type="number" name="Product.ProductMedia[`+ i +`].Order"/>
                         <input hidden class="input-group" type="checkbox" name="Product.ProductMedia[`+ i +`].PrimaryMedia"/>
-                        <input hidden class="input-group" type="number" name="Product.ProductMedia[`+ i +`].MediaType"/>
-                        <input hidden class="input-group" type="file" name="Product.ProductMedia[`+ i +`].MediaContent"/>
+                        <input hidden class="input-group" type="text" name="Product.ProductMedia[`+ i +`].FileType"/>
+                        <input hidden class="input-group" type="text" name="Product.ProductMedia[`+ i +`].MediaContent"/>
 
                         <div class="input-group col-md-6">
                             <label class="input-group-addon" asp-for="Product.ProductMedia[`+ i + `].Hide">Hide?</label>
                             <div class="switch-container">
                                 <label class="switch switch-default switch-pill switch-primary switch-margin-top">
-                                    <input asp-for="Product.ProductMedia[`+ i +`].Hide" type="checkbox" class="switch-input hide-toggle-button" checked="">
+                                    <input name="Product.ProductMedia[`+ i +`].Hide" type="checkbox" class="switch-input hide-toggle-button">
                                     <span class="switch-label"></span>
                                     <span class="switch-handle"></span>
                                 </label>
@@ -154,8 +154,11 @@ var initDragAndDrop = function () {
                     // Assign Order to images
                     assignImageIndex();
 
-                    // Assign content to input
-                    //$('input[name="Product.ProductMedia[' + i + '].MediaContent"').val(reader.result);   // TODO FIX
+                    // Assign image type to form
+                    assignImageType(i, reader);
+
+                    // Assign content to input as base64 string
+                    $('input[name="Product.ProductMedia[' + i + '].MediaContent"').val(reader.result);
 
                     // Register on-click listener
                     $('.image-upload-preview').on('click', function () {
@@ -173,16 +176,21 @@ var initDragAndDrop = function () {
                     // Register toggle hide listener
                     $('.hide-toggle-button').on('click', function () {
 
-                        var index = $(this).parent('div').data("image-form-index");
+                        var index = $(this).closest('div.media-row').data("image-form-index");
 
                         if ($(this).is(":checked"))
                         {
                             $(".image-upload-preview[data-image-index=" + index + "]").children(".preview-image").addClass("hidden");
+                            $('input[name="Product.ProductMedia[' + index + '].Hide"]').prop('checked', true);
+                            $('input[name="Product.ProductMedia[' + index + '].Hide"]').val(true);
                         }
                         else
                         {
                             $(".image-upload-preview[data-image-index=" + index + "]").children(".preview-image").removeClass('hidden');
+                            $('input[name="Product.ProductMedia[' + index + '].Hide"]').prop('checked', false);
+                            $('input[name="Product.ProductMedia[' + index + '].Hide"]').val(false);
                         }
+
                     });
 
                     // Register 'sortable'
@@ -209,17 +217,34 @@ var initDragAndDrop = function () {
         var images = $('.image-upload-preview');
         $.each(images, function (i, image) {
 
-            i = i + 1;
+            // Get + assign value to form element
+            var input = $('input[name="Product.ProductMedia[' + i + '].Order"]');
+            input.val(i);
 
-            if (i == 1)
+            if (i == 0)
             {
-                image.insertAdjacentHTML("beforeend", "<span class=\"badge badge-success image-index-badge\">" + i + "</span>");
+                // Primary media
+                image.insertAdjacentHTML("beforeend", "<span class=\"badge badge-success image-index-badge\">" + (i + 1) + "</span>");
             }
             else
             {
-                image.insertAdjacentHTML("beforeend", "<span class=\"badge badge-secondary image-index-badge\">" + i + "</span>");
+                // Non-primary media
+                image.insertAdjacentHTML("beforeend", "<span class=\"badge badge-secondary image-index-badge\">" + (i + 1) + "</span>");
             }
         });
+    };
 
+    var assignImageType = function (index, reader) {
+
+        var fileString = reader.result;
+        var regex = /[0-9a-z]+;/i;
+        var fileTypeArr = fileString.match(regex);
+
+        if (fileTypeArr != null)
+        {
+            fileType = fileTypeArr[0].slice(0, fileTypeArr[0].length - 1);
+            fileType = fileType.toUpperCase();
+            $('input[name="Product.ProductMedia[' + index + '].FileType"').val(fileType);
+        }
     };
 };
