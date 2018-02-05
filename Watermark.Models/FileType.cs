@@ -1,6 +1,6 @@
-﻿namespace Watermark.Models.Products
+﻿namespace Watermark.Models
 {
-    public enum ProductMediaFileType
+    public enum FileType
     {
         // Unknown
         Unknown = 0,

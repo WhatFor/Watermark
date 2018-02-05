@@ -104,7 +104,7 @@ namespace Watermark.Models.Products
         [NotMapped]
         public bool HasTemplate => Template != null;
 
-        public List<ProductMedia> GetMediaByType(ProductMediaType type)
+        public List<ProductMedia> GetMediaByType(MediaType type)
         {
             return ProductMedia.Where(m => m.MediaType == type).ToList();
         }

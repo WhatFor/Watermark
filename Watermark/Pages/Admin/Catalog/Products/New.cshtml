@@ -82,13 +82,13 @@
 
                         <div class="input-group col-md-6" style="margin-bottom: 20px;">
                             <label class="input-group-addon" asp-for="Product.PriceInformation.BasePrice.Cost" hover-desc=@Model.Product.PriceInformation.BasePrice.Cost></label>
-                            <input type="text" asp-for="Product.PriceInformation.BasePrice.Cost" class="form-control" />
+                            <input type="number" asp-for="Product.PriceInformation.BasePrice.Cost" class="form-control" />
                             <label class="input-group-addon additional-label-primary">@Model.GlobalCurrency</label>
                         </div>
 
                         <div class="input-group col-md-6" style="margin-bottom: 20px;">
                             <label class="input-group-addon" asp-for="Product.PriceInformation.ManufacturerRRP" hover-desc=@Model.Product.PriceInformation.ManufacturerRRP></label>
-                            <input type="text" asp-for="Product.PriceInformation.ManufacturerRRP" class="form-control" />
+                            <input type="number" asp-for="Product.PriceInformation.ManufacturerRRP" class="form-control" />
                             <label class="input-group-addon additional-label-primary">@Model.GlobalCurrency</label>
                         </div>
 
@@ -192,6 +192,49 @@
                         </div>
                     </div>
 
+                </div>
+            </div>
+
+            <!-- Product Description -->
+            <div class="row">
+
+                <!-- Product Description Header -->
+                <div class="col-md-12">
+                    <h6>Product Descriptions</h6>
+                    <hr />
+                </div>
+
+                <!-- Description Text Area -->
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <textarea class="form-control" rows="10"></textarea> <!-- todo: replace with a nice markdown editor -->
+                    </div>
+                </div>
+
+                <!-- Description Sidebar -->
+                <div class="col-md-3">
+                    <div class="col-md-12">
+                        <h5>Languages</h5>
+                        <hr />
+                    </div>
+
+                    <div class="row">
+                        <div class="input-group col-md-12">
+                            <button class="btn btn-default btn-block btn-language-select" data-language="English">English</button>
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <div class="row">
+                        <div class="input-group col-md-10">
+                            <label for="language-select-add" class="input-group-addon">Add Language</label>
+                            <select id="language-select-add" asp-items="Html.GetEnumSelectList<Watermark.Models.Language>()" class="form-control"></select>
+                        </div>
+                        <div class="input-group col-md-offset-1 col-md-1">
+                            <button class="btn btn-default" id="add-language-button" style="margin-left: -2px;"><i class="fa fa-plus"></i></button>
+                        </div>
+                    </div>
                 </div>
             </div>
 

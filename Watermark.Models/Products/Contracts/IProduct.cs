@@ -80,7 +80,7 @@ namespace Watermark.Models.Products.Contracts
 
         bool HasSKU { get; }
 
-        List<ProductMedia> GetMediaByType(ProductMediaType type);
+        List<ProductMedia> GetMediaByType(MediaType type);
 
         ProductMedia GetPrimaryMedia();
 

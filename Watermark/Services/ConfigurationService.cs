@@ -38,5 +38,10 @@ namespace Watermark.Services
         {
             return configurationRepository.GetGlobalCurrency();
         }
+
+        public Language GetDefaultLanguage()
+        {
+            return configurationRepository.GetDefaultLanguage();
+        }
     }
 }

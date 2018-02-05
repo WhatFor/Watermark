@@ -27,7 +27,14 @@ namespace Watermark.Repository
         {
             return dbContext.Configuration
                 .Include(m => m.CurrencyConfiguration)
-                .FirstOrDefault().CurrencyConfiguration.GlobalCurrency;
+                .FirstOrDefault().CurrencyConfiguration?.GlobalCurrency ?? Currency.NIL;
+        }
+
+        public Language GetDefaultLanguage()
+        {
+            return dbContext.Configuration
+                .Include(m => m.LanguageConfiguration)
+                .FirstOrDefault().LanguageConfiguration?.DefaultLanguage ?? Language.NotSet;
         }
 
         public async Task<Configuration> UpdateConfigurationAsync(Configuration config)

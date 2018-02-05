@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Watermark.Models.Products
 {
-    public class ProductMedia
+    public class ProductMedia : File
     {
         [Key]
         public int Id { get; set; }
@@ -17,12 +17,6 @@ namespace Watermark.Models.Products
         /// </summary>
         [Display(Name = "Description", Description = "A short description of the image, displayed on the product page.")]
         public string MediaDescription { get; set; }
-
-        /// <summary>
-        ///  Determined by the File Type. Either Image or Video.
-        /// </summary>
-        [Required]
-        public ProductMediaType MediaType => DetermindMediaType();
 
         /// <summary>
         /// Wether the media element is the primary media for the product. Will be used as the product's image in product listings and thumbnails.
@@ -46,22 +40,16 @@ namespace Watermark.Models.Products
         public bool Hide { get; set; }
 
         /// <summary>
-        /// The file-type of the media, e.g. PNG. Provided by the form-post data.
-        /// </summary>
-        [Required]
-        public ProductMediaFileType FileType { get; set; }
-
-        /// <summary>
         /// Base 64 Encoded file data.
         /// </summary>
         [NotMapped]
-        public string MediaContent { get; set; }
+        public string Content { get; set; }
 
         /// <summary>
         /// The auto-generated, relative file-path of the media.
         /// </summary>
         [NotMapped]
-        public Uri Path => GetFilePath();
+        public new Uri Path => GetFilePath();
 
         /// <summary>
         /// Using various elements of the product media, we will craft a filepath to point to the storage location
@@ -74,45 +62,16 @@ namespace Watermark.Models.Products
 
             uri += "~/";
 
-            uri += MediaType == ProductMediaType.Image ? "Images/" : "Video/";
+            uri += MediaType == MediaType.Image ? "Images/" : "Video/";
 
-            uri += ProductId + Id + ".";
+            uri += Content.GetHashCode() + ".";
 
             uri += FileType.ToString();
 
             return new Uri(uri, UriKind.Relative);
         }
 
-        /// <summary>
-        /// Uses the file-extension, provided by the form-post, to determine if the media is an Image or Video.
-        /// </summary>
-        /// <returns>ProductMediaType</returns>
-        private ProductMediaType DetermindMediaType()
-        {
-            switch (FileType)
-            {
-                // Unable to determine
-                case ProductMediaFileType.Unknown:
-                    return ProductMediaType.Unknown;
 
-                // Images
-                case ProductMediaFileType.JPEG:
-                    return ProductMediaType.Image;
-
-                case ProductMediaFileType.JPG:
-                    return ProductMediaType.Image;
-
-                case ProductMediaFileType.PNG:
-                    return ProductMediaType.Image;
-
-                // Video
-                case ProductMediaFileType.MP4:
-                    return ProductMediaType.Video;
-
-                default:
-                    return ProductMediaType.Unknown;
-            }
-        }
 
         /// <summary>
         /// If the media element is first in the Order, we treat it as the 'Primary Media'.

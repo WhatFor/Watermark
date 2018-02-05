@@ -11,5 +11,7 @@ namespace Watermark.Models.Admin.Configuration
         public int Id { get; set; }
 
         public CurrencyConfiguration CurrencyConfiguration { get; set; }
+
+        public LanguageConfiguration LanguageConfiguration { get; set; }
     }
 }
