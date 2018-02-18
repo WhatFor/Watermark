@@ -10,8 +10,8 @@ namespace Watermark.Services.Contracts
 
         Task<Configuration> UpdateConfigurationAsync(Configuration config);
 
-        Currency GetGlobalCurrency();
+        Currency? GetGlobalCurrency();
 
-        Language GetDefaultLanguage();
+        Language? GetDefaultLanguage();
     }
 }

@@ -34,12 +34,16 @@ namespace Watermark.Services
             return await configurationRepository.UpdateConfigurationAsync(config);
         }
 
-        public Currency GetGlobalCurrency()
+        public bool GlobalCurrencySet => configurationRepository.GetGlobalCurrency() != null;
+
+        public Currency? GetGlobalCurrency()
         {
             return configurationRepository.GetGlobalCurrency();
         }
 
-        public Language GetDefaultLanguage()
+        public bool DefaultLanguageSet => configurationRepository.GetDefaultLanguage() != null;
+
+        public Language? GetDefaultLanguage()
         {
             return configurationRepository.GetDefaultLanguage();
         }

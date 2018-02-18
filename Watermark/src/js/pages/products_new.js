@@ -23,6 +23,7 @@ $(document).ready(function () {
     datePickerInit();
     specialPriceInit();
     clearLabelInit();
+    initPell();
 });
 
 // Setup logic for datepickers
@@ -247,4 +248,39 @@ var initDragAndDrop = function () {
             $('input[name="Product.ProductMedia[' + index + '].FileType"').val(fileType);
         }
     };
+};
+
+// Init pell.js text editor
+var initPell = function () {
+    pell.init({
+        element: document.getElementById('text-editor'),
+        onChange: html => console.log(html),
+        styleWithCSS: false,
+        actions: [
+            'bold',
+            'italic',
+            'underline',
+            'strikethrough',
+            'heading1',
+            'heading2',
+            'paragraph',
+            'quote',
+            'olist',
+            'ulist',
+            'line',
+            'link',
+            'image'
+        ],
+        classes: {
+            actionbar: 'pell-actionbar',
+            button: 'pell-button',
+            content: 'pell-content'
+        }
+    });
+
+    // Prevent the control buttons from bubbling up and submitting our form.
+    $('.pell-button').on('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+    });
 };

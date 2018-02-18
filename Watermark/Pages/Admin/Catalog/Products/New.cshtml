@@ -11,6 +11,7 @@
 @section Styles
 {
     <link rel="stylesheet" type="text/css" href="~/vendors/css/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="~/vendors/css/pell.min.css" />
 }
 
 
@@ -21,7 +22,7 @@
     </div>
 
     <div class="card-body">
-        <form asp-controller="Products" asp-action="AddProductAsync"
+        <form asp-page-handler="Create"
                 data-ajax-begin="onBegin" data-ajax-complete="onComplete"
                 data-ajax-failure="onFailed" data-ajax-success="onSuccess"
                 data-ajax="true" data-ajax-method="POST">
@@ -207,7 +208,9 @@
                 <!-- Description Text Area -->
                 <div class="col-md-9">
                     <div class="form-group">
-                        <textarea class="form-control" rows="10"></textarea> <!-- todo: replace with a nice markdown editor -->
+                        <div id="text-editor">
+                            
+                        </div>
                     </div>
                 </div>
 
@@ -260,4 +263,5 @@
     <script src="@Url.Content("~/js/pages/products_new.js")"></script>
     <script src="@Url.Content("~/vendors/js/jquery-ui.min.js")"></script>
     <script src="@Url.Content("~/vendors/js/sortable.min.js")"></script>
+    <script src="@Url.Content("~/vendors/js/pell.min.js")"></script>
 }

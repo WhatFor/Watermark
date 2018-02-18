@@ -8,10 +8,10 @@ namespace Watermark.Pages
     public class WatermarkPageModel : PageModel
     {
         [BindProperty]
-        public Currency GlobalCurrency { get; set; }
+        public Currency? GlobalCurrency { get; set; }
 
         [BindProperty]
-        public Language DefaultLanguage { get; set; }
+        public Language? DefaultLanguage { get; set; }
 
         private readonly IConfigurationService configurationService;
 

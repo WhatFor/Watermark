@@ -23,18 +23,18 @@ namespace Watermark.Repository
                 .FirstOrDefault();
         }
 
-        public Currency GetGlobalCurrency()
+        public Currency? GetGlobalCurrency()
         {
             return dbContext.Configuration
                 .Include(m => m.CurrencyConfiguration)
-                .FirstOrDefault().CurrencyConfiguration?.GlobalCurrency ?? Currency.NIL;
+                .FirstOrDefault().CurrencyConfiguration?.GlobalCurrency ?? null;
         }
 
-        public Language GetDefaultLanguage()
+        public Language? GetDefaultLanguage()
         {
             return dbContext.Configuration
                 .Include(m => m.LanguageConfiguration)
-                .FirstOrDefault().LanguageConfiguration?.DefaultLanguage ?? Language.NotSet;
+                .FirstOrDefault().LanguageConfiguration?.DefaultLanguage ?? null;
         }
 
         public async Task<Configuration> UpdateConfigurationAsync(Configuration config)
