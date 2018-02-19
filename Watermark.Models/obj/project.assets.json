@@ -3744,11 +3744,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\Chris\\Documents\\Visual Studio 2017\\Projects\\Watermark\\Watermark.Models\\Watermark.Models.csproj",
+      "projectUniqueName": "C:\\Users\\Chris\\Source\\Watermark\\Watermark.Models\\Watermark.Models.csproj",
       "projectName": "Watermark.Models",
-      "projectPath": "C:\\Users\\Chris\\Documents\\Visual Studio 2017\\Projects\\Watermark\\Watermark.Models\\Watermark.Models.csproj",
+      "projectPath": "C:\\Users\\Chris\\Source\\Watermark\\Watermark.Models\\Watermark.Models.csproj",
       "packagesPath": "C:\\Users\\Chris\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Chris\\Documents\\Visual Studio 2017\\Projects\\Watermark\\Watermark.Models\\obj\\",
+      "outputPath": "C:\\Users\\Chris\\Source\\Watermark\\Watermark.Models\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -3762,6 +3762,9 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Users\\Chris\\.dotnet\\NuGetFallbackFolder": {},
+        "\\\\CEDITA-LEE\\Cedita\\Nuget": {},
+        "http://nuget.grapecity.com/nuget": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -3778,19 +3781,19 @@
     "frameworks": {
       "netcoreapp2.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Identity": {
+            "target": "Package",
+            "version": "[2.0.1, )"
+          },
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
             "target": "Package",
-            "version": "2.0.1"
+            "version": "[2.0.1, )"
           },
           "Microsoft.NETCore.App": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "2.0",
+            "version": "[2.0.0, )",
             "autoReferenced": true
-          },
-          "Microsoft.AspNetCore.Identity": {
-            "target": "Package",
-            "version": "2.0.1"
           }
         },
         "imports": [

@@ -341,18 +341,25 @@ var UpdateDescriptionForLanguage = function (html) {
     if (currentLanguage.length === 0) {
 
         // Add
-        let descriptionString = '<div data-language="' + selectedLang + '"><input class="language-body">' + html + '</input></div>';
-        let languageString = '<div data-language="' + selectedLang + '"><input class="language-type">' + selectedLang + '</input></div>';
+        let index = $('#descriptions-form-container').find('.language-body').length;
 
-        // todo: assign Id and index to input elements for form post
+        let bodySelector = 'Product.Descriptions[' + index + '].Body';
+        let langSelector = 'Product.Descriptions[' + index + '].Language';
+
+        let descriptionString = '<div data-language="' + selectedLang + '"><input name="' + bodySelector + '" class="language-body"></input></div>';
+        let languageString = '<div data-language="' + selectedLang + '"><input name="' + langSelector + '" class="language-type"></input></div>';
+
 
         descriptions.append(languageString);
         descriptions.append(descriptionString);
+
+        $('div[name="' + bodySelector + '"]').val(html);
+        $('div[name="' + langSelector + '"]').val(selectedLang);  // TODO: LANGUAGE NOT POSTING
     }
     else {
 
         // Edit
-        currentLanguage.children('.language-body').text(html);
+        currentLanguage.children('.language-body').val(html);
     }
 };
 
@@ -363,7 +370,7 @@ var changeDescriptionEntry = function (language) {
 
     if (currentLanguage.length !== 0) {
 
-        var descriptionString = $(currentLanguage).find('.language-body').text();
+        var descriptionString = $(currentLanguage).find('.language-body').val();
         $('.pell-content').text(descriptionString);
     }
     else {
