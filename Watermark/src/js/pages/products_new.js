@@ -24,6 +24,7 @@ $(document).ready(function () {
     specialPriceInit();
     clearLabelInit();
     initPell();
+    initProductDescriptions();
 });
 
 // Setup logic for datepickers
@@ -254,7 +255,7 @@ var initDragAndDrop = function () {
 var initPell = function () {
     pell.init({
         element: document.getElementById('text-editor'),
-        onChange: html => console.log(html),
+        onChange: html => UpdateDescriptionForLanguage(html),
         styleWithCSS: false,
         actions: [
             'bold',
@@ -283,4 +284,89 @@ var initPell = function () {
         e.preventDefault();
         e.stopPropagation();
     });
+};
+
+// Build listeners and logic for Descriptions section
+var initProductDescriptions = function () {
+
+    const languagesList = $('#available-languages');
+    const addLanguage = $('#add-language-button');
+
+    $(addLanguage).on('click', function (e) {
+
+        let selectedLang = $('#language-select-add option:selected').text();
+
+        if (selectedLang !== '')
+        {
+            let insertHtml = '<button class="btn btn-default btn-block btn-language-select selected-language" data-language="' + selectedLang + '">' + selectedLang + '</button>';
+
+            $('#language-select-add option:selected').attr('hidden', 'hidden');
+            $('#available-languages button').removeClass('selected-language');
+            $('.pell-content').text('');
+            $(insertHtml).appendTo('#available-languages');
+
+            $('#language-select-add').val([]);
+            registerButtonListeners();
+        }
+        
+        e.preventDefault();
+        e.stopPropagation();
+    });
+
+
+    var registerButtonListeners = function () {
+        $('#available-languages button').on('click', function (e) {
+
+            $('#available-languages button').removeClass('selected-language');
+            $(this).addClass('selected-language');
+
+            let langString = $(this).text();
+            changeDescriptionEntry(langString);
+
+            e.preventDefault();
+            e.stopPropagation();
+        });
+    };
+
+};
+
+// save the updated description to a hidden field, for storage and posting
+var UpdateDescriptionForLanguage = function (html) {
+
+    var selectedLang = $('button.selected-language').text();
+    const descriptions = $('#descriptions-form-container');
+
+    var currentLanguage = descriptions.find('div[data-language="' + selectedLang + '"]');
+
+    if (currentLanguage.length === 0) {
+
+        // Add
+        let descriptionString = '<div data-language="' + selectedLang + '"><input class="language-body">' + html + '</input></div>';
+        let languageString = '<div data-language="' + selectedLang + '"><input class="language-type">' + selectedLang + '</input></div>';
+
+        // todo: assign Id and index to input elements for form post
+
+        descriptions.append(languageString);
+        descriptions.append(descriptionString);
+    }
+    else {
+
+        // Edit
+        currentLanguage.children('.language-body').text(html);
+    }
+};
+
+// Update the text-area to contain the description for the selected language
+var changeDescriptionEntry = function (language) {
+
+    var currentLanguage = $('#descriptions-form-container').find('div[data-language="' + language + '"]');
+
+    if (currentLanguage.length !== 0) {
+
+        var descriptionString = $(currentLanguage).find('.language-body').text();
+        $('.pell-content').text(descriptionString);
+    }
+    else {
+        $('.pell-content').text('');
+    }
 };

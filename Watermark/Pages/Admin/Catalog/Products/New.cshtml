@@ -222,8 +222,11 @@
                     </div>
 
                     <div class="row">
-                        <div class="input-group col-md-12">
-                            <button class="btn btn-default btn-block btn-language-select" data-language="English">English</button>
+                        <div id="available-languages" class="input-group col-md-12">
+                            @foreach (var language in Model.Product.Descriptions.Select(m => m.Language))
+                            {
+                                <button class="btn btn-default btn-block btn-language-select" data-language="English">@language</button>
+                            }
                         </div>
                     </div>
 
@@ -237,6 +240,10 @@
                         <div class="input-group col-md-offset-1 col-md-1">
                             <button class="btn btn-default" id="add-language-button" style="margin-left: -2px;"><i class="fa fa-plus"></i></button>
                         </div>
+                    </div>
+
+                    <div id="descriptions-form-container" hidden>
+
                     </div>
                 </div>
             </div>

@@ -133,3 +133,12 @@
     top: -104px;
     right: -86px;
 }
+
+#available-languages {
+    display: block;
+}
+
+.selected-language {
+    background-color: #238CB7;
+    color: white;
+}
