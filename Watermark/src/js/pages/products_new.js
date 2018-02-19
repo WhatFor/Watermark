@@ -298,7 +298,8 @@ var initProductDescriptions = function () {
 
         if (selectedLang !== '')
         {
-            let insertHtml = '<button class="btn btn-default btn-block btn-language-select selected-language" data-language="' + selectedLang + '">' + selectedLang + '</button>';
+            let enumVal = $('#language-select-add option:selected').val();
+            let insertHtml = '<button class="btn btn-default btn-block btn-language-select selected-language" data-enum="' + enumVal + '" data-language="' + selectedLang + '">' + selectedLang + '</button>';
 
             $('#language-select-add option:selected').attr('hidden', 'hidden');
             $('#available-languages button').removeClass('selected-language');
@@ -334,6 +335,8 @@ var initProductDescriptions = function () {
 var UpdateDescriptionForLanguage = function (html) {
 
     var selectedLang = $('button.selected-language').text();
+    var selectedLangIndex = $('button.selected-language').data('enum');
+
     const descriptions = $('#descriptions-form-container');
 
     var currentLanguage = descriptions.find('div[data-language="' + selectedLang + '"]');
@@ -353,8 +356,8 @@ var UpdateDescriptionForLanguage = function (html) {
         descriptions.append(languageString);
         descriptions.append(descriptionString);
 
-        $('div[name="' + bodySelector + '"]').val(html);
-        $('div[name="' + langSelector + '"]').val(selectedLang);  // TODO: LANGUAGE NOT POSTING
+        $('input[name="' + bodySelector + '"]').val(html);
+        $('input[name="' + langSelector + '"]').val(selectedLangIndex);  // TODO: LANGUAGE NOT POSTING
     }
     else {
 
