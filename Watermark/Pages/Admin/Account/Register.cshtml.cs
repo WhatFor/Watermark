@@ -68,9 +68,11 @@ namespace Watermark.Pages.Admin.Account
                 {
                     _logger.LogInformation("User created a new account with password.");
 
+#if (!DEBUG)
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
                     await _emailSender.SendEmailConfirmationAsync(Input.Email, callbackUrl);
+#endif
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return LocalRedirect(Url.GetLocalUrl(returnUrl));
