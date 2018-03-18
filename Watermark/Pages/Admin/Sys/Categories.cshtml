@@ -1,0 +1,62 @@
+﻿@page
+@model Watermark.Pages.Admin.Sys.CategoriesModel
+
+@{
+    ViewData["Title"] = "Product Categories";
+}
+
+@section Styles
+{
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <strong>Product Categories</strong>
+            </div>
+            <div class="card-body card-body-large">
+                <form asp-action="OnPostAsync"
+                      data-ajax-begin="onBegin" data-ajax-complete="onComplete"
+                      data-ajax-failure="onFailed" data-ajax-success="onSuccess"
+                      data-ajax="true" data-ajax-method="POST">
+
+                    <div class="card-body-large-subheading">
+                        <h6>Manage Categories</h6>
+                        <hr />
+                    </div>
+
+                    <div class="form-group row card-body-large-body">
+                        @foreach (var category in Model.Categories)
+                        {
+                            <div>
+                                @category.Name
+                                @foreach (var child in category.Children)
+                                {
+                                    <div>@child.Name</div>
+                                }
+                            </div>
+                        }
+
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="submit" value="Save" class="btn btn-primary" />
+                        </div>
+                    </div>
+
+                    <p id="results"></p>
+                </form>
+            </div>
+
+            <div class="card-footer">
+                Footer.
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+}

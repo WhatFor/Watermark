@@ -19,6 +19,8 @@ namespace Watermark.Repository
 
         public DbSet<Notification> Notifications { get; set; }
 
+        public DbSet<ProductCategory> ProductCategory { get; set; }
+
         public DbSet<Configuration> Configuration { get; set; }
     }
 }

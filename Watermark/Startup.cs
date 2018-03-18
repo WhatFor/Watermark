@@ -42,12 +42,14 @@ namespace WatermarkApi
             services.AddScoped<IProductService, ProductService>();
             services.AddSingleton<IEmailSenderService, EmailSenderService>();
             services.AddScoped<IConfigurationService, ConfigurationService>();
+            services.AddScoped<ICategoriesService, CategoriesService>();
 
             // Register Repositories
             services.AddScoped<INotificationsRepository, NotificationsRepository>();
             services.AddScoped<IApplicationUserRepository, ApplicationUserRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IConfigurationRepository, ConfigurationRepository>();
+            services.AddScoped<ICategoriesRepository, CategoriesRepository>();
 
             // Authentication Setup
             services.AddIdentity<ApplicationUser, IdentityRole>()
